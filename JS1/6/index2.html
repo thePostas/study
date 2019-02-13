@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script> 
+        window.onload = function() {
+            var e1 = document.querySelectorAll(".e1");
+            for (var i = 0; i < e1.length; i++) {
+                e1[i].addEventListener('click', e_call);
+                //e1[i].removeEventListener('click', e_call);
+            }
+        };
+        function e_call(e) {
+            console.log("this", this);
+            console.log("etarget", e.target);
+//            e.stopPropagation();
+        }
+        
+//      
+//            var e1 = document.querySelectorAll(".e1");
+//            for (var i = 0; i < e1.length; i++) {
+//            e1[i].addEventListener('click', function(){
+//                console.log(i);
+//            });    
+//        }
+        
+//        var abc = (function() {
+//            var count2 = 1;
+//            return function (start) {
+//                count2 = !!start ? start : count2;
+//                return count2++;
+//            }
+//        }());
+//        
+//        
+//        console.log(abc());
+//        console.log(abc());
+//        console.log(abc());
+//        console.log(abc());
+        
+
+//        var calculate = function(num) {
+//            if(num > 10) throw new Error("Wrong number");
+//            console.log(num);
+//        }
+//       
+//        try {
+//            calculate(20);
+//        } catch {
+//            console.log("неверное число");
+//        } finally {
+//            console.log("конец")
+//        }
+        
+//        for (var i = 0; i <= 3; i++) {
+//            console.log(i);
+//        }
+//        console.log(i);
+        
+//        for (var i = 0; i <= 3; i++) {
+//            setTimeout(function(){
+//                console.log(i);
+//            }, 1000)
+//        }
+//        console.log(i);
+        
+//        var object = Object.create({x: 10, y: 20});
+//        console.log(object.hasOwnProperty("x"));
+//        console.log(object.x);
+//        console.log(object);
+//        object.x = 77;
+//        console.log(object.x);
+//        console.log(object);
+//        console.log(object.hasOwnProperty("x"));
+//        delete object.x;
+//        console.log("x" in object);
+//        console.log(object.hasOwnProperty("x"));
+        
+//        var abc = function () {
+//            return this.name;
+//        }
+//        
+//        var object = {
+//            name: "Ass"
+//        }
+//        
+//        var bound = abc.bind(object);
+//        console.log(abc.bind(object));
+        
+//        var test = {
+//            _age: 30,
+//            name: "Postas",
+//            set age(value) {
+//                this._age = value;
+//            },
+//            get age() {
+//                console.log(this._age);
+//            }
+//        }
+//        test.age = 35;
+//        test.age;
+//        
+//        console.log(Object.getOwnPropertyDescriptor(test, "_age"));
+//        Object.defineProperty(test, "gender", {
+//            value: "male",
+//            writable: false,
+//            enumerable: true,
+//            configurable: false
+//        });
+//        
+//        console.log(test);
+//        
+//        for (property in test) {
+//            console.log(property + " " + test[property]);
+//        }
+        
+//        var o = {
+//            z: 500
+//        };
+//        Object.defineProperties(o, {
+//           x: {
+//               value: 10,
+//               writable: true
+//           },
+//            
+//            y: {
+//                value: 20,
+//                writable: false
+//            },
+//            
+//            r: {
+//                get: function() {
+//                return this.x;
+//                }
+//        }
+//            
+//        });
+//        
+//        console.log(o);
+//        Object.seal(o);
+//        delete o.z;
+//        console.log(o);
+//        var Person = {
+//            name: "default",
+//            constructor: function(name, age, gender) {
+//                this.name = name;
+//                this.age = age;
+//                this.gender = gender;
+//                return this;
+//            },
+//            greet: function() {
+//                console.log("Hi! My name is " + this.name);
+//            }
+//        }
+//
+//        var developerProto = Object.create(Person);
+//        developerProto.constructor = function(name, age, gender, skills) {
+//            Person.constructor.apply(this, arguments);
+////            this.name = name;
+////            this.age = age;
+////            this.gender = gender;
+////            this.skills = skills || [];
+//            return this;
+//   
+//        }
+//        
+//        
+//        var junior = Object.create(developerProto).constructor("Postas", 30, "male", ["js", 'react', 'css']);
+//        
+//        
+//        console.log(junior);
+        
+//        var string = "Привет, меня зовут Александр";
+//        console.log(string.indexOf("зовут"));
+        
+    
+    </script> 
+</head>
+<body>
+    <div class="e1">Это див<span class="e1">Это спан </span>Это конец div</div>
+    <a href="" onclick="return false">link 1</a>
+    <a href="" onclick=event.preventDefault>link 2</a>
+    <a href="javascript:void(0)">link 3</a>
+</body>
+</html>

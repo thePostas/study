@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lesson4</title>
+    <script>
+        console.log('------------');
+        console.log('Объекты в JS');
+        var car = {
+            make: 'Audi',
+            model: 'A5',
+            year: 2015,
+            color: 'red',
+            power: 225
+        };
+        console.log(car);
+        //alert(car); // выведет [object Object]
+        //alert([1,2,3]); // массив выведется как строка
+        // Изменение данных в объекте
+        console.log('------------');
+        console.log('Изменение данных в объекте');
+        car.power = 300;
+        console.log(car);
+        car['power'] = 325;
+        console.log(car);
+        // Добавление данных в объект
+        console.log('------------');
+        console.log('Добавление данных в объект');
+        car.odometr = 100;
+        console.log(car);
+        // Удаление данных из объекта
+        console.log('------------');
+        console.log('Удаление данных из объекта');
+        delete car.odometr;
+        console.log(car);
+        var numbers = {
+            1: 1,
+            2: 2,
+            7: 7,
+            3: 3
+        };
+        console.log(numbers);
+
+        // Хранение объектов
+        console.log('------------');
+        console.log('Хранение объектов');
+        car.odometr = 0;
+        console.log(car);
+        function road(myCar, distance) {
+            myCar.odometr += distance;
+        }
+        road(car, 150);
+        console.log(car);
+        // Методы объекта
+        console.log('------------');
+        console.log('Методы объекта');
+        var obj = {
+            v: true,
+            unv: function () {
+                this.v = !this.v;
+            }
+        };
+        console.log(obj);
+        obj.unv();
+        console.log(obj);
+        car.startEngine = function () {
+            console.log('Двигатель запущен!');
+        };
+        car.startEngine();
+        // расширение car
+        console.log('------------');
+        console.log('расширение car');
+        console.log(car);
+        car.engineStarted = false;
+        car.startEngine = function () {
+            this.engineStarted = true;
+        };
+        car.stopEngine = function () {
+            this.engineStarted = false;
+        };
+        car.road = function (distance) {
+            if (this.engineStarted) {
+                this.odometr += distance;
+            }
+            else {
+                alert('Двигатель не запущен');
+            }
+        };
+        console.log(car);
+        car.road(100);
+        console.log(car);
+        car.startEngine();
+        console.log(car);
+        car.road(150);
+        console.log(car);
+
+        // перебор объекта и его клонирование
+        console.log('------------');
+        console.log('перебор объекта и его клонирование');
+        var carClone={};
+        for(var key in car){
+            console.log(key,car[key]); // перебор объекта
+            carClone[key]=car[key]; // Клонирование объекта
+        }
+        console.log(car);
+        console.log(carClone);
+        car.startEngine();
+        car.road(500);
+        carClone.startEngine();
+        carClone.road(7);
+        console.log(car);
+        console.log(carClone);
+
+        // Перебор объекта 2-й вариант
+        console.log('------------');
+        console.log('Перебор объекта 2-й вариант');
+        var cc={};
+        Object.keys(carClone).map(function (key,index) {
+            console.log(index,key,carClone[key]);
+            cc[key]=carClone[key];
+        });
+        console.log('cc ',cc);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

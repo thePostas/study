@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chest</title>
+</head>
+<body>
+    <script>
+        var chest = document.createElement("div");
+        chest.classList.add("chest");
+        chest.style.display = "flex";
+        chest.style.flexWrap = "wrap";
+        chest.style.height = 840 + "px";
+        chest.style.width = 840 + "px";
+
+        chest.style.boxSizing = "borderbox";
+        document.body.appendChild(chest);
+        
+        var white = document.createElement("div");
+        white.classList.add("black");
+        white.style.height = 100 + "px";
+        white.style.width = 100 + "px";
+        white.style.boxSizing = "borderbox";
+        white.style.backgroundColor = "#ffffff";
+        
+        var black = white.cloneNode(white);
+        black.classList.add("black");
+        black.style.backgroundColor = "#000000";
+        
+        var horisontalBorder = document.createElement("div");
+        horisontalBorder.style.backgroundColor = "#AA0000";
+        horisontalBorder.style.height = 20 + "px";
+        horisontalBorder.style.width = 100 + "px";
+        //horisontalBorder.style.borderTop = 1 + "px " + "solid " + "black";
+        horisontalBorder.style.borderBottom = 1 + "px " + "solid " + "black";
+        horisontalBorder.style.textAlign = "center";
+        
+        var verticalBorder = horisontalBorder.cloneNode(true);
+        verticalBorder.style.height = 100 + "px";
+        verticalBorder.style.width = 20 + "px";
+        
+        var row = 0;
+        for (var i = 0; i < 8; i++) {
+            if (row % 2 == 0) {
+                if (row == 0) {
+                   for (var c = 0; c < 8; c++){
+                       var current = chest.appendChild(horisontalBorder.cloneNode(true));
+                       switch(c) {
+                            case 0: current.innerHTML = "A"; break;
+                            case 1: current.innerHTML = "B"; break;
+                            case 2: current.innerHTML = "C"; break;
+                            case 3: current.innerHTML = "D"; break;
+                            case 4: current.innerHTML = "E"; break;
+                            case 5: current.innerHTML = "F"; break;
+                            case 6: current.innerHTML = "G"; break;
+                            case 7: current.innerHTML = "H"; break;
+                       }
+                }
+                }
+            for (var j = 0; j < 8; j++) {
+                if (j % 2 == 0) {
+                    chest.appendChild(white.cloneNode(true));
+                } else {
+                    chest.appendChild(black.cloneNode(true));
+                }
+                
+                
+        }
+    } else {
+        
+        for (var j = 0; j < 8; j++) {
+                if (j % 2 > 0) {
+                    chest.appendChild(white.cloneNode(true));
+                } else {
+                    chest.appendChild(black.cloneNode(true));
+                }
+        }
+    }
+            if (row == 7) {
+                for (var c = 0; c < 8; c++){  
+                   var current =  chest.appendChild(horisontalBorder.cloneNode(true));
+                        
+                        switch(c) {
+                            case 0: current.innerHTML = "A"; break;
+                            case 1: current.innerHTML = "B"; break;
+                            case 2: current.innerHTML = "C"; break;
+                            case 3: current.innerHTML = "D"; break;
+                            case 4: current.innerHTML = "E"; break;
+                            case 5: current.innerHTML = "F"; break;
+                            case 6: current.innerHTML = "G"; break;
+                            case 7: current.innerHTML = "H"; break;
+                       }                            
+                }
+            }
+            
+            row += 1;
+            console.log(row);
+}
+    </script>
+</body>
+</html>

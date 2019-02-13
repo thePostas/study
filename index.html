@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button class="button">click me</button>
+    <button class="button">click me</button>
+    <button class="button">click me</button>
+    <script>
+//        function greet(greeting) {
+//            return greeting + "! My name is " + this.name;
+//        }
+//        var person = {
+//            name: "John",
+//            greet: greet
+//        }
+//        
+//        var anotherPerson = {
+//            name: "Bob",
+//            greet: greet
+//        }
+//        
+//        var ass = function () {
+//            var count = 0;
+//            return function() {
+//                return count++;
+//            }
+//        }
+//        
+//        var c1 = ass();
+//        console.log(c1());
+//        console.log(c1());
+//        console.log(c1());
+//        console.log(c1());
+//        console.log(c1());
+//        console.log(c1());
+//        console.log(c1());
+//        
+//        var c2 = ass();
+//        console.log(c2());
+//        console.log(c2());
+//        console.log(c2());
+//        console.log(c2());
+//        
+//        function piss() {
+//            return 100;
+//        }
+//        
+//        function c4 () {
+//            return piss();
+//        }
+//        var c5 = c4();
+//        c5 = c5 + c4();
+//        console.log(c5);
+//        console.log(c5);
+//        console.log(c5);
+//        console.log(c5);
+//        
+//        var counter = function() {
+//            var count = 0;
+//            return function () {
+//               return count++;
+//            }
+//        }
+//        
+//        var counter1 = counter();
+//        console.log(counter1());
+//        console.log(counter1());
+//        console.log(counter1());
+//        console.log(counter1());
+//        console.log(counter1());
+//        
+//        var counter2 = counter();
+//        console.log(counter2());
+//        console.log(counter2());
+//        console.log(counter2());
+//        console.log(counter2());
+//        console.log(counter2());
+//        
+//        var counterClone = counter;
+//        var counter3 = counterClone();
+//        console.log(counter3());
+//        console.log(counter3());
+//        console.log(counter3());
+//        console.log(counter3());
+//        var buttons = document.querySelectorAll(".button");
+//        console.log(buttons);
+//        function ass(button, i) {
+//            button.addEventListener('click', function() {
+//                console.log(i);
+//            })
+//        }
+//   
+  var buttons = document.getElementsByClassName("button");      
+
+        
+        for (var i = 0; i < buttons.length; i++) (function(i){
+            buttons[i].addEventListener('click', function() {
+               console.log(i); 
+            });
+        })(i);
+//       var number = 954;
+//        var hun = Math.floor(number / 100);
+//        console.log(hun);
+//        var tens = Math.floor(number % 100 / 10);
+//        console.log(tens);
+//        var one = number % 10;
+//        console.log(one);
+     
+//        var person = {
+//            constuctor: function(name, age, gender) {
+//                this.name = name;
+//                this.age = age;
+//                this.gender = gender;
+//                return this;
+//            }
+//        }
+//        
+//        Object.defineProperty(person, "constuctor", {
+//            enumerable: false
+//        });
+//        
+//        var human = Object.create(person).constuctor("Ricardo", 42, "male");
+//        
+//        console.log(human);
+//        
+//        for (key in human) {
+//            console.log(key + ": " + human[key]);
+//        }
+//        
+//        var developer = Object.create(person);
+//        developer.constuctor = function(name, age, gender, skills){
+//            person.constuctor.apply(this, arguments);
+//            this.skills = skills || [];
+//            return this;
+//        }
+//        
+//        var junior = Object.create(developer).constuctor("Postas", 30, "male", ["css", "html", "javascript"]);
+//        
+//        console.log(junior);
+//        var arr1 = [40,20,30];
+//        var arr2 = [10,50,60];
+//        
+//        var arr = arr1.concat(arr2);
+//
+//        
+//        test = (num, ...bugaga) => {
+//            for (key in bugaga) {
+//                console.log(bugaga[key]);
+//            } 
+//        }
+//        
+//        test(20, 50, 40, 70, 80);
+//        
+//        var option = {
+//            size: {
+//                width: 100,
+//                height: 200
+//            },
+//            color : ["red", "blue"]
+//            
+//        }
+//        
+//        var {title = "default_title", size: {width, height}, color: [backgroundColor, color] } = option;
+//        console.log(title);
+//        console.log(width);
+//        console.log(height);
+//        console.log(backgroundColor);
+//        console.log(color);
+        
+        
+//        var buttons = document.getElementsByClassName("button");
+//        buttons[0].addEventListener('click', () => {console.log("Сработало")});
+        
+//        const counter = () => {
+//            var count = 0;
+//            return () => count++;
+//            
+//        }
+//        
+//        var counter1 = counter();
+//        console.log(counter1());
+//        console.log(counter1());
+//        console.log(counter1());
+//        console.log(counter1());
+//        
+//        for(var i = 0; i < 3; i++) (i =>{setTimeout(() => console.log(i), 1000);
+//        })(i);
+//        
+//        for(var i = 0; i < 3; i++) (function(i) {
+//            setTimeout(function(){
+//                console.log(i);
+//            }, 1000);
+//        })(i);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <script>    
+       const fn = item => console.log(item);
+       fn("Hello");
+       
+       function getParams(options = {num1: 10, num2: 20}) { //значения по умолчанию
+           console.log(options.num1);
+           console.log(options.num2);
+       }
+       
+       var replaceObj = {
+           num1: 50,
+           num2: 100
+       }
+       getParams(replaceObj);
+       
+       const joinArg = (first, ...args) => [first, ...args].join(", ");
+       console.log(joinArg(5, 10, 15, 25));
+       var test = joinArg(10, 20, 40, 50);
+       console.log(test);
+       
+       const joinArgs = ({first, second}) => {
+           console.log(first);
+           console.log(second);
+        
+       };
+       
+       var object = {
+           first: "Hello",
+           second: "Goodbye",
+           third: "Adjos",
+           fourth: "Привет"
+       }
+  
+       joinArgs({first: 10, second: 20, third: 30, fourth: 40});
+       joinArgs(object);
+    
+       if (true) {
+           sayHello();
+           console.log(i);
+           var i = 50;
+           console.log(i);
+           function sayHello() {
+               console.log(word);
+               var word = "Hello";
+               console.log(word);
+           }
+       }
+       
+       const group = {
+           title: "Список учеников",
+           users: ["Евгений", "Дарья", "Михаил"],
+           
+           showItems: function() {
+               this.users.forEach(
+               student => console.log(this.title + ": " + student)
+               );
+           } 
+       }
+       
+       group.showItems();
+       
+       const name = "Евгений";
+       console.log('Привет меня зовут ${name}');
+       
+       const user = {
+           job: "Программист",
+           name
+       }
+       
+       console.log(user.name);
+    </script>
+</body>
+</html>

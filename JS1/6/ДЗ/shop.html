@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+  <style type="text/css">
+      
+   
+   .hide {
+   display: none;
+   }
+  </style>
+    <script>
+        var good1 = document.createElement("div");
+        good1.classList.add("good");
+        good1.classList.add("good_1");
+        var good1name = good1.textContent = "Розовый страпон";
+        good1.style.height = 100 + "px";
+        good1.style.width = 100 + "px";
+        good1.style.backgroundColor = "#ff66ff";
+        good1.style.margin = 10 + "px";
+        good1.style.textAlign = "center";
+        good1.style.display = "flex";
+        good1.style.flexDirection = "column";
+        document.body.appendChild(good1);
+        var button1 = document.createElement('button');
+        button1.classList.add("button");
+        button1.innerHTML = "buy".toUpperCase();
+        good1.appendChild(button1);
+        var good1Price = document.createElement("p");
+        good1Price.style.margin = 0;
+        good1Price.textContent = "100$";
+        good1.appendChild(good1Price);
+        button1.onclick = function() {addToCart(100, good1name)};
+        
+        var good2 = document.createElement("div");
+        good2.classList.add("good");
+        good2.classList.add("good_1");
+        var good2name = good2.textContent = "Желтый страпон \n";
+        good2.style.height = 100 + "px";
+        good2.style.width = 100 + "px";
+        good2.style.backgroundColor = "yellow";
+        good2.style.margin = 10 + "px";
+        good2.style.textAlign = "center";
+        good2.style.display = "flex";
+        good2.style.flexDirection = "column";
+        document.body.appendChild(good2);
+        var button2 = document.createElement('button');
+        button2.classList.add("button");
+        button2.innerHTML = "buy".toUpperCase();
+        good2.appendChild(button2);
+        var good2Price = document.createElement("p");
+        good2Price.style.margin = 0;
+        good2Price.textContent = "200$";
+        good2.appendChild(good2Price);
+        button2.onclick = function() {addToCart(200, good2name)};
+        
+        var total = 0;
+        
+        var cart = document.createElement("div");
+        cart.classList.add("cart");
+        cart.innerHTML = "Корзина";
+        cart.style.minHeight = 100 + "px";
+        cart.style.width = 300 + "px";
+        cart.style.textAlign = "center";
+        cart.style.backgroundColor = "#c44230";
+        document.body.appendChild(cart);
+        var totalPrice = document.createElement("p");
+        good2Price.style.margin = 0;
+        cart.appendChild(totalPrice);
+        totalPrice.innerHTML = "Итого: " + total;
+        var list = document.createElement("div");
+        cart.appendChild(list);
+        var showHide = document.createElement("h3");
+        showHide.classList.add("hide");
+        showHide.classList.add("show-hide");
+        showHide.textContent = "Показать список";
+        showHide.style.cursor = "pointer";
+        cart.appendChild(showHide);
+        list.classList.add("hide");
+        list.classList.add("list");
+        var listItem = document.createElement("p");
+        list.appendChild(listItem);
+        
+        var counter = 1;
+        function addToCart(price, name) {
+            console.log(name);
+            total += price;
+            totalPrice.innerHTML = "Итого: " + total;
+            list.appendChild(listItem.cloneNode(true)).innerHTML = counter + " " +name;
+           
+                    
+        while (counter <= 1) {
+            showHide.classList.remove("hide");
+            break;
+        } 
+             counter++;
+        }
+        
+//        var showList = document.querySelector(".show-hide");
+        var showList = document.getElementsByClassName("show-hide");
+        console.log(showList);
+        showList[0].addEventListener('click', function() {
+            if (list.classList.contains('hide')) {
+                list.classList.remove('hide');
+                showHide.classList.add('hide');
+            }
+        });
+
+        
+   
+//        var buttons = document.querySelectorAll(".button");
+//
+//        
+//        for (var i = 0; i < buttons.length; i++) {
+//            buttons[i].addEventListener('click', function() {
+//                
+//            });
+//        }
+    </script>
+</body>
+</html>

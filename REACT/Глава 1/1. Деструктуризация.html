@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const {obj1, obj2} = {obj1: {name: "ONE"} , obj2: "im the two"};
+        console.log(obj1);
+        console.log(typeof obj1);
+        console.log(typeof obj2);
+        const [first, second, third] = ['im the first', 'im the second', 'im the third'];
+        console.log(first);
+       
+        const {objectFirst, objectSecond = "default", objectThird} = {
+            objectFirst: "One", 
+            objectThird: {
+                name: "third",
+                number: 15
+            },
+        objectSecond: "replace",
+        };
+        console.log(objectFirst);
+        console.log(objectSecond);
+        console.log(objectThird);
+        
+        var objectExample = {
+            name: "Object",
+            number: 001
+        }
+        
+        console.log(objectExample.name);
+        
+        const options = {
+            size: {
+                width: 100,
+                height: 200
+            },
+            items: ["first", "second"]
+        }
+        
+        console.log(options.size.height);
+        console.log(options.items[0]);
+        
+        const { title = "MyTitle", size: {width, height}, items: [item1, item2]} = options;
+        
+//        console.log(abc.size.height);
+//        console.log(abc.items[0]);
+        console.log(height + 100);
+//        console.log(abc.size.height + 123)
+        console.log(item1);
+        
+        var [firstName, lastName, ...rest] = "Я люблю мандарины".split(" ");
+        console.log(firstName);
+        console.log(lastName);
+        console.log(rest[0]);
+//        console.log(rest[1]);
+        
+        var arr = [firstName, lastName, ...rest] = "Привет, как дела".split(" ");
+        console.log(arr);
+        console.log(firstName);
+        console.log(lastName);
+        console.log(rest[0]);
+    
+
+
+        
+    </script>
+
+</body>
+</html>

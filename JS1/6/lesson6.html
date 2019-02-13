@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lesson6</title>
+    <script>
+        window.onload = function () {
+            var e1 = document.querySelectorAll('.e1');
+            for(var i =0;i<e1.length;i++){
+                e1[i].addEventListener('click',e_call); // Задаём событие
+                //e1[i].removeEventListener('click',e_call); //  Удаление события
+            }
+
+        };
+        function e_call(e) {
+            console.log('this',this);
+            console.log('e.target',e.target);
+            e.stopPropagation(); // Остановка всплытия
+        }
+    </script>
+</head>
+<body>
+<div class="e1">Это div <span class="e1"> Это span </span>Это конец div</div>
+<a href="/" onclick="return false;">link 1</a><br>
+<a href="/" onclick="event.preventDefault()">link 2</a><br>
+<a href="javascript:void(0)">link 3, Этот вариант не желателен</a>
+</body>
+</html>

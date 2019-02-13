@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('p').addClass('my').css('color', 'red');
+            $('.p2').css({
+                backgroundColor: 'lime',
+                fontSize: 22 + 'px'
+            })
+            $('.p3').css({
+                backgroundColor: 'yellow',
+                fontSize: '6px'
+            })
+            $('#b1').on('click', function () {
+                $(this).text('Button clicked');
+                console.log('Btn click');
+                // $(this).off('click');
+                //Сворачивание разворачивание
+                // $('#p4').slideToggle(2000);
+                // $('#p4').fadeToggle(2000);
+                //Анимация
+                $('#p4').animate({
+                    fontSize: '36px',
+                    marginLeft: '400px'
+                }, 3000);
+            });
+            $('#b2').on('click', function () {
+                $('#p4').animate({
+                    fontSize: '22px',
+                    marginLeft: '0px'
+            }, 3000)
+            })
+        })
+    </script>
+    <script>
+        var array = [50, 14, 65, 9, 8, 11, 33];
+        function sort() {
+            for (var i = 0; i < array.length; i++) {
+                for (var j = i+1; j < array.length; j++) {
+                    if (array[i] > array[j]) {
+                        var temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
+        }
+        sort();
+        console.log(array);
+    </script>
+    <title>Document</title>
+</head>
+<body>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur consequuntur cupiditate deleniti dolore
+    dolores dolorum, illum ipsum magni maxime, nesciunt nihil nulla perspiciatis quisquam repellat sapiente tempore,
+    totam vel.</p>
+<p>Alias animi, cum deleniti, dicta dignissimos dolorem ducimus eaque est fuga hic id illum ipsam laudantium libero
+    neque nesciunt nihil nisi, non qui quis saepe sapiente sint soluta tenetur ullam.</p>
+<p class="p2">Consectetur, cum distinctio dolores eaque eos eveniet excepturi expedita facilis hic id illum iste laboriosam laborum
+    molestiae nemo numquam obcaecati odit omnis perferendis praesentium quas quisquam veritatis vitae? Labore, sint.</p>
+<button id="b1">Zoom in</button>
+<button id="b2">Zoom out</button>
+<p class="p2" id="p4">A cum cumque dicta doloremque doloribus ducimus eligendi et, exercitationem explicabo facilis ipsum iste labore,
+    magnam maxime, modi molestias nam pariatur perferendis porro quisquam quos sapiente sint totam velit veritatis?</p>
+</body>
+</html>

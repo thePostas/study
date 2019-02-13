@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Угадайка</title>
+    <script>
+        var number, // Четыре цифры нашего числа
+            attempts = 0; // Число попыток
+
+        // Общая формула: min - Math.random() * (max - min)
+        number = Math.round(1000 + Math.random() * (9999 - 1000));
+        console.log(1000 + Math.random() * (9999 - 1000));  // Проверка рандома
+        guessNumber();  // Начинается игра
+
+        function guessNumber() {
+            attempts++;
+            var result = parseInt(prompt('Введите четырёхзначное число (-1 - Выход)', 0));
+
+            // Игрок угадал число
+            if (result == number) {
+                alert('Вы угадали! Число попыток: ' + attempts);
+                location.reload(); // Перезагружаем страницу
+            }
+            // Игрок не ввёл число
+            else if (result == 0 || isNaN(result)) {
+                alert('Вы ввели не число');
+                guessNumber();
+            }
+            // Выход из игры
+            else if (result == -1) {
+                alert('Спасибо за игру!');
+            }
+            else {
+                // сравнение
+                if (result > number) {
+                    alert('Ваше число больше загаданного');
+                }
+                else {
+                    alert('Ваше число меньше загаданного');
+                }
+                // Повторяем попытку угадать число
+                guessNumber();
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery</title>
+    <script>
+        /*
+        window.onload = function () {
+            var images = document.getElementsByTagName("img");
+            for (var i = 0; i < images.length; i++) {
+                images[i].onclick = changeBigPicture;
+            }
+            function changeBigPicture(event) {
+                var appDiv = document.getElementById("big_picture");
+                appDiv.innerHTML = "";
+                var eventElement = event.target; // Цель клика
+                var imageNamePart = eventElement.id.split("_")[1]; //разбивает имя на массив до и после "_", номер картинки будет под индексом 1
+                console.log(imageNamePart);
+                var src = "img/big/" + imageNamePart + ".jpg";
+                var imgElement = document.createElement("img");
+                imgElement.src = src;
+                appDiv.appendChild(imgElement);
+            }
+        }
+        */
+        window.onload = function () {
+            var images = document.getElementsByTagName("img");
+            for (var i = 0; i < images.length; i++) {
+                images[i].addEventListener("click", func);
+            }
+            function func(event) {
+                var appDiv = document.getElementById("big_picture");
+                appDiv.innerHTML = "";   
+                var eventElement = event.target;
+                var imageNamePart = eventElement.id.split("_")[1];
+                var src = "img/big/" + imageNamePart + ".jpg";
+                var imgElement = document.createElement("img");
+                imgElement.src = src;
+                imgElement.onerror = function() { alert("Ошибка! картинки нет"+this.src)};
+                appDiv.appendChild(imgElement);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="big_picture"></div>
+    <div id="gallery">
+        <img id="img_1" src="img/small/1.jpg" alt="img">
+        <img id="img_2" src="img/small/2.jpg" alt="img">
+        <img id="img_3" src="img/small/3.jpg" alt="img">
+    </div>
+</body>
+</html>

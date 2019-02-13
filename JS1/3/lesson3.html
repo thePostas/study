@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lesson3</title>
+    <script>
+        // while
+        console.log('-------------');
+        console.log('while');
+        var a = 0;
+        while (a < 3) {
+            console.log('a = ', a);
+            a++;
+        }
+
+        // a = 3
+        // do while
+        console.log('-------------');
+        console.log('do while');
+        var b = 5;
+        do {
+            console.log(b--);
+        } while (b > 2);
+        do {
+            console.log('a = ', a);
+        } while (a != 3);
+
+        // for
+        console.log('-------------');
+        console.log('for');
+        for (var i = 0; i < 5; i++) {
+            console.log(i);
+        }
+        console.log('for без использования инициализации');
+        for (; ;) {
+
+            if (i == 6 || i == 8) {
+                i++;
+                continue; // продолжение цикла
+            }
+            console.log(i++);
+            if (i == 10) {
+                break; // прерывание цикла
+            }
+        }
+
+        var obj = {name: 'Илья', friend: 'Игорь'};
+        console.log('for in');
+        for (var key in obj) {
+            console.log(key, obj[key]);
+        }
+
+        // бесконечный цикл
+        /*while (true){
+         // что-то
+         }*/
+        // Массивы
+        var arr = [1, 2, 3, 4, 'ilya', true]; // Объявление массива способ 1
+        var arr2 = new Array(1, 2, 3);// Объявление массива способ 2
+        console.log(arr);
+        console.log(arr2);
+        console.log(arr[0]); // обращение к элементу
+
+        // Добавление элементов
+        arr.push('new1');
+        arr.unshift('new2');
+        console.log(arr);
+        arr[1] = 'replace';
+        console.log(arr);
+        //arr[99]=99; // так делать не рекомендуется
+        arr[arr.length] = 'newNew';
+        console.log(arr);
+        // Проверка на класс
+        console.log([] instanceof Array);
+        console.log([] instanceof Object);
+
+        // удаление из массива
+        delete arr[0];
+        console.log(arr);
+        arr.shift(); // удаляет 1-й элемент
+        arr.shift(); // удаляет 1-й элемент
+        console.log(arr);
+        arr.pop(); // удаляет последний элемент
+        console.log(arr);
+
+        // перебор массива в цикле
+        console.log('-------------');
+        console.log('перебор через for');
+        for (i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+        }
+        console.log('перебор через for in');
+        for (key in arr) {
+            console.log(arr[key]);
+        }
+        console.log('перебор через foreach');
+        arr.forEach(function (item, i, array) {
+            if(i==1){
+                item='newItem';
+                array[i]='newItemArr'
+            }
+            console.log(item,i,array);
+        });
+        console.log(arr);
+        // Рассмотр примера
+        console.log('-------------');
+        console.log('Рассмотр примера');
+        var names = ['Илья','Игорь','Наталья','Михаил'],hiNames=[];
+        console.log(names);
+        names.forEach(function (item,i,array) {
+            hiNames[i]=item+', привет!';
+            console.log(hiNames[i]);
+        });
+        console.log(names);
+        console.log(hiNames);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

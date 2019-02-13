@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div id="div1">Первый блок</div>
+    <div class="d1" id="div2">Второй блок</div>
+    <div class="d1" id="div3">Третий блок</div>
+    <script>
+        var body = document.getElementsByTagName("body");
+        var show = document.getElementById("div1");
+        console.log(show);
+        var show2 = document.getElementsByClassName("d1");
+        console.log(show2);
+        var nDiv = document.createElement("div");
+        nDiv.classList.add("new-div");
+        nDiv.innerHTML = "Новый блок";
+        var innerDiv = nDiv.cloneNode(true);
+        innerDiv.className = "inner-div";
+        innerDiv.innerHTML = "Внутренний блок";
+        document.body.appendChild(nDiv);
+        show2[1].appendChild(innerDiv);
+        show2[1].appendChild(innerDiv.cloneNode(true));
+
+        var replace = nDiv.cloneNode(true);
+        replace.innerHTML = "блок-замена";
+        var innerShow2 = show2[1].getElementsByTagName("div");
+        show2[1].replaceChild(replace, innerShow2[1]);
+        // show2[1].removeChild(innerShow2[0]);
+        document.body.insertBefore(div2, div1);
+        document.body.replaceChild(div1, div2);
+        innerDiv.parentNode.appendChild(replace.cloneNode(true));
+    </script>
+</body>
+</html>

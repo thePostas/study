@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button class="button">click me</button>
+    <button class="button">click me</button>
+    <button class="button">click me</button>
+    <script>
+        var button = document.querySelectorAll(".button");
+        for (var i = 0; i < 3; i++) (function(i){
+           
+            button[i].addEventListener('click', function(){
+
+                console.log(i);
+            
+            });
+        }(i));
+            console.log(!!"" === false);
+//        function makeCounter() {
+//          function ass() {
+//            return makeCounter.currentCount++;
+//            };
+//            makeCounter.currentCount = 1;
+//
+//          return ass;
+//}
+//
+//        
+//        var counter = makeCounter();
+//        console.log(counter());
+//        console.log(counter());
+        
+//        var white = document.createElement("div");
+//        document.body.appendChild(white);
+//        
+//        for (var i = 0; i < 3; i++) {
+//            (function(i){
+//            setTimeout(function() {
+//            console.log(i);
+//            }, 1000)}(i));
+//        }
+    
+////        var arr = [];
+////        for (var i = 0; i < 3; i++) {
+////            arr.push(ass());
+////            function ass() {
+////                return i;
+////            }
+////        }
+////        arr.shift[0];
+////        console.log(arr);
+//        
+//        function Counter() {
+//            var count = 0;
+//            return function() {
+//                return count++;
+//            }
+//        }
+//        
+//        var counter = Counter();
+//        console.log(counter());
+//        console.log(counter());
+//        console.log(counter());
+//        console.log(counter());
+//        console.log(counter());
+//        console.log(counter());
+        </script>
+</body>
+</html>
