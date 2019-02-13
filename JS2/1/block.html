@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="style.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Element, Div, Header, headerNavigation, Menu, MenuItem;
+        
+        Element = function (className, parent) {
+            this.elementName;
+            this.className = className;
+            this.parent = parent;
+            // this.width = 0 || width;
+            // this.height = 0 || height;
+        };
+
+        Element.prototype.render = function () {
+            var newItem = document.createElement(this.elementName);
+            var classes = this.className.split(' ');
+            for (var i = 0; i < classes.length; i++) {
+                newItem.classList.add(classes[i]);
+            }
+            if (this.parent === 'document.body') {
+                document.body.appendChild(newItem);
+            } else {
+                var parentItem = document.getElementsByClassName(this.parent);
+                document.getElementsByClassName(this.parent)[0].appendChild(newItem);
+            }
+        };
+
+        Div = function (className, parent) {
+            Element.apply(this, arguments);
+            this.elementName = 'div';
+        };
+
+
+        Header = function (className, parent) {
+            Element.apply(this, arguments);
+            this.elementName = 'header';
+        };
+
+        Header.prototype = Object.create(Element.prototype);
+        Header.prototype.constructor = Header;
+
+        header = new Header('header', 'document.body');
+        header.render();
+
+        Navigation = function (className, parent) {
+            Element.apply(this, arguments);
+            this.elementName = 'nav';
+        };
+
+        Navigation.prototype = Object.create(Element.prototype);
+        Navigation.prototype.constructor = Navigation;
+
+        headerNavigation = new Navigation('header-navigation navigation', 'header');
+        headerNavigation.render();
+
+        ListUL = function (className, parent, ...navigationItems) {
+            Element.apply(this, arguments);
+            this.elementName = 'ul';
+            this.navigationItems = navigationItems || [] ;
+        };
+
+        ListUL.prototype = Object.create(Element.prototype);
+        ListUL.prototype.constructor = ListUL;
+
+        ListUL.prototype.render = function () {
+            var newItem = document.createElement(this.elementName);
+            var classes = this.className.split(' ');
+            // var parentItem = document.getElementsByClassName(this.parent);
+            document.getElementsByClassName(this.parent)[0].appendChild(newItem);
+            for (var i = 0; i < classes.length; i++) {
+                newItem.classList.add(classes[i]);
+            }
+            for (var j = 0; j < this.navigationItems.length; j++) {
+                var listLink = document.createElement('a');
+                listLink.classList.add(this.navigationItems[j].linkClass);
+                listLink.href = this.navigationItems[j].linkHref;
+                var listItem = document.createElement(this.navigationItems[j].elementName);
+                listItem.textContent = this.navigationItems[j].textContent
+                listLink.appendChild(listItem);
+                document.getElementsByClassName(this.navigationItems[j].parent)[0].appendChild(listLink);
+            }
+        };
+
+
+
+        ListUlElement = function (className, parent, linkClass, linkHref, textContent) {
+            Element.apply(this, arguments);
+            this.textContent = textContent;
+            this.linkClass = linkClass;
+            this.linkHref = linkHref;
+            this.elementName = 'li';
+        };
+        ListUlElement.prototype = Object.create(Element.prototype);
+        ListUlElement.prototype.constructor = ListUlElement;
+
+        navigationListElement1 = new ListUlElement('navigation-list-item', 'navigation-list', 'navigation-list-link', '#', 'Home');
+        navigationListElement2 = new ListUlElement('navigation-list-item', 'navigation-list', 'navigation-list-link', '#','Catalog');
+        navigationListElement3 = new ListUlElement('navigation-list-item', 'navigation-list', 'navigation-list-link', '#','Contacts');
+        navigationListElement4 = new ListUlElement('navigation-list-item', 'navigation-list', 'navigation-list-link', '#','About Us');
+
+        navigationList = new ListUL('navigation-list list', 'navigation', navigationListElement1, navigationListElement2, navigationListElement3 ,navigationListElement4);
+        navigationList.render();
+
+        // newElement = new Element('div', 'first-element', 'document.body');
+        // newElement.render();
+        // console.log(newElement);
+    </script>
+</body>
+</html>

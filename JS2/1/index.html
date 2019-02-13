@@ -9,23 +9,38 @@
 </head>
 <body>
     <script>
-        function Container() {
-            this.id = '';
-            this.className = '';
-            this.htmlCode = '';
-        }
+        var Person, personOne, Developer, developer1;
+        Person = function (name, age, gender) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+        };
 
-        Container.prototype.render = function () {
-            return this.htmlCode;
-        }
 
-        function Menu(myID, myClass, myItems) {
-            Container.call(this);
-        }
+        personOne = new Person('Mike', 25, 'male');
 
-        Menu.prototype = Object.create(Container.prototype);
-        Menu.prototype.constructor = Menu;
 
+        Person.prototype.printStats = function () {
+            for (var key in this) {
+                console.log(key + ' ' + this[key])
+            }
+        };
+
+        personOne.printStats();
+
+        Developer = function (name, age, gender, skills) {
+            Person.apply(this, arguments);
+            this.skills = skills || [];
+        };
+
+        Developer.prototype = Object.create(Person.prototype);
+        Developer.prototype.constructor = Developer;
+
+        developer1 = new Developer('Postas', 30, 'male', ['css', 'html', 'js']);
+        Person.prototype.hello = function() {
+            console.log("hello");
+        };
+        developer1.hello();
 
     </script>
 </body>

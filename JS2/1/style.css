@@ -1,0 +1,27 @@
+.header {
+    margin: 0 auto;
+    background-color: antiquewhite;
+    display: flex;
+    height: 200px;
+    min-width: 640px;
+}
+
+.navigation {
+    margin: 0 auto;
+    align-self: center;
+    width: 100%;
+}
+
+.navigation-list {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+
+.navigation-list-link {
+    padding: 20px 80px;
+}
+
+.navigation-list-link:hover {
+    background-color: aquamarine;
+}
