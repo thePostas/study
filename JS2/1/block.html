@@ -26,7 +26,7 @@
             for (var i = 0; i < classes.length; i++) {
                 newItem.classList.add(classes[i]);
             }
-            if (this.parent === 'document.body') {
+            if (this.parent === 'body') {
                 document.body.appendChild(newItem);
             } else {
                 var parentItem = document.getElementsByClassName(this.parent);
@@ -48,7 +48,7 @@
         Header.prototype = Object.create(Element.prototype);
         Header.prototype.constructor = Header;
 
-        header = new Header('header', 'document.body');
+        header = new Header('header', 'body');
         header.render();
 
         Navigation = function (className, parent) {
@@ -80,13 +80,13 @@
                 newItem.classList.add(classes[i]);
             }
             for (var j = 0; j < this.navigationItems.length; j++) {
+                var listItem = document.createElement(this.navigationItems[j].elementName);
                 var listLink = document.createElement('a');
                 listLink.classList.add(this.navigationItems[j].linkClass);
                 listLink.href = this.navigationItems[j].linkHref;
-                var listItem = document.createElement(this.navigationItems[j].elementName);
-                listItem.textContent = this.navigationItems[j].textContent
-                listLink.appendChild(listItem);
-                document.getElementsByClassName(this.navigationItems[j].parent)[0].appendChild(listLink);
+                listLink.textContent = this.navigationItems[j].textContent;
+                listItem.appendChild(listLink);
+                document.getElementsByClassName(this.navigationItems[j].parent)[0].appendChild(listItem);
             }
         };
 

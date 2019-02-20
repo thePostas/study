@@ -40,6 +40,7 @@
         var programmer = Object.create(human);
         programmer.constructor = function (name, age, gender, skills) {
             human.constructor.apply(this, arguments);
+            this.skills = skills || [];
             return this;
         }
 
