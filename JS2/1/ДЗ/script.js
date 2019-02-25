@@ -1,11 +1,11 @@
-function Element(className, parentClass) {
-    this.className = className;
+function Element(elementClassName, parentClass) {
+    this.elementClassName = elementClassName;
     this.parentClass = parentClass;
 }
 
 Element.prototype.render = function (elementType) {
     var newElement = document.createElement(this.elementType);
-    newElement.classList.add(this.className);
+    newElement.classList.add(this.elementClassName);
     if (this.parentClass === 'body') {
         document.body.appendChild(newElement);
     } else {
@@ -14,14 +14,13 @@ Element.prototype.render = function (elementType) {
 };
 
 Element.prototype.remove = function () {
-    console.log(this.classList);
-
-    var node = document.getElementsByClassName(this.className)[0];
+    var node = document.getElementsByClassName(this.elementClassName)[0];
+    console.log(node);
     node.parentNode.removeChild(node);
 };
 
 
-var Div = function (className, parentClass) {
+var Div = function (elementClassName, parentClass) {
     Element.apply(this, arguments);
     this.elementType = 'div';
 };
@@ -29,7 +28,7 @@ var Div = function (className, parentClass) {
 Div.prototype = Object.create(Element.prototype);
 Div.constructor = Div;
 
-var List = function (className, parentClass, ...elements) {
+var List = function (elementClassName, parentClass, ...elements) {
     Element.apply(this, arguments);
     this.elementType = 'ul';
     this.elements = elements || [];
@@ -40,16 +39,17 @@ List.constructor = List;
 
 List.prototype.render = function () {
     var newElement = document.createElement(this.elementType);
-    newElement.classList.add(this.className);
+    newElement.classList.add(this.elementClassName);
     for (var i = 0; i < this.elements.length; i++) {
         if (this.elements[i] instanceof ListElement) {
             var link = document.createElement('a');
-            link.classList.add(this.className.toString() + '-link')
+            link.classList.add(this.elementClassName.toString() + '-link');
             link.href = this.elements[i].link;
             var item = document.createElement('li');
-            item.classList.add(this.className.toString() + '-item');
-            item.classList.add(this.className.toString() + '-item-' + (i+1));
+            // item.classList.add(this.elementClassName.toString() + '-item');
+            item.classList.add(this.elementClassName.toString() + '-item-' + (i+1));
             link.innerHTML = this.elements[i].content;
+            this.elements[i].elementClassName = this.elementClassName.toString() + '-item-' + (i+1);
             item.appendChild(link);
             newElement.appendChild(item);
         } else {
@@ -59,20 +59,20 @@ List.prototype.render = function () {
     document.getElementsByClassName(this.parentClass)[0].appendChild(newElement);
 };
 
-var ListElement = function (link, content) {
+var ListElement = function (linkAddress, content) {
     this.elementType = 'li';
-    this.link = link;
+    this.linkAddress = linkAddress;
     this.content = content;
 };
-
-ListElement.prototype.render = function() {
-  
-};
-
 
 ListElement.prototype = Object.create(Element.prototype);
 ListElement.constructor = ListElement;
 
+ListElement.prototype.remove = function () {
+    var node = document.getElementsByClassName(this.className)[0];
+    console.log(node);
+    node.parentNode.removeChild(node);
+}
 
 var navigation = new Div('navigation', 'body');
 navigation.render();
@@ -91,3 +91,6 @@ var subMenu = new List('navigation__list-sub-menu', 'navigation__list-item-3', n
 
 navigationList.render();
 subMenu.render();
+
+subMenu.remove();
+navigationSubMenuItem2.remove();
