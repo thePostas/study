@@ -20,14 +20,14 @@ var Hamburger = function (size, stuffing) {
     // } else this.array.push(Hamburger.STUFFING_POTATO);
     if (size === 'LARGE') {
         this.ingridients.push(['LARGE', Hamburger.SIZE_LARGE]);
-    } else this.this.ingridients.push(['LARGE', Hamburger.SIZE_SMALL]);
+    } else this.ingridients.push(['LARGE', Hamburger.SIZE_SMALL]);
 };
 
 Hamburger.prototype.addTopping = function (topping) {
     for (let i = 0; i < topping.length; i++) {
         if (topping === 'spice') {
-            this.array.push(Hamburger.TOPPING_SPICE);
-        } else this.array.push(Hamburger.TOPPING_MAYO);
+            this.ingridients.push(['Spice',Hamburger.TOPPING_SPICE]);
+        } else this.ingridients.push(['MAYO',Hamburger.TOPPING_MAYO]);
     }
 };
 
