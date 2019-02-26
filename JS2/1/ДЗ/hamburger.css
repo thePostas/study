@@ -1,0 +1,30 @@
+.hamburger {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: burlywood;
+    margin: 0 auto;
+}
+
+.hamburger__size {
+    display: flex;
+}
+
+.hamburger__configuration {
+    display: flex;
+    margin-top: 10px;
+}
+
+.hamburger__topping {
+    display: flex;
+    flex-direction: column;
+}
+
+.hamburger__result {
+    width: 250px;
+    height: 50px;
+    background-color: azure;
+    margin-top: 50px;
+}

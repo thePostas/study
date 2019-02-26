@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<link rel="stylesheet" href="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="hamburger.css">
+    <script src="hamburger.js" defer></script>
+    <title>Hamburger</title>
+</head>
+<body>
+    <form method="post" id="form" class="hamburger">
+        <legend class="hamburger__legend">Choose hamburger</legend>
+        <img src="hanburrger.jpg" alt="img" width="197" height="119">
+        <div class="hamburger__configuration">
+            <fieldset class="hamburger__size">
+                <p class="hamburger__size-text">Choose size</p>
+                <label class="hamburger__size-label"><input type="radio" name="burger-size" value="LARGE" class="hamburger__size-button" checked>Large</label>
+                <label class="hamburger__size-label"><input type="radio" name="burger-size" value="SMALL" class="hamburger__size-button">Small</label>
+            </fieldset>
+            <fieldset class="hamburger__stuffing">
+                <p class="hamburger__legend-text">Choose stuffing</p>
+                <select class="hamburger__stuffing-select">
+                    <option value="cheese" class="hamburger__stuffing-select-option" selected>cheese</option>
+                    <option value="salad" class="hamburger__stuffing-select-option">salad</option>
+                    <option value="potato" class="hamburger__stuffing-select-option">potato</option>
+                </select>
+            </fieldset>
+            <fieldset class="hamburger__topping">
+                <p class="hamburger__topping-text">Choose topping</p>
+                <label class="hamburger__topping-label"><input type="checkbox" class="hamburger__topping-input" value="spice">Spice</label>
+                <label class="hamburger__topping-label"><input type="checkbox" class="hamburger__topping-input" value="mayo">MAYO</label>
+            </fieldset>
+        </div>
+        <button class="hamburger__submit">calculate</button>
+        <div class="hamburger__result">
+            <p class="hamburger__result-price"></p>
+            <p class="hamburger__result-calories"></p>
+        </div>
+    </form>
+</body>
+</html>
