@@ -7,27 +7,22 @@ var Hamburger = function (size, stuffing) {
     Hamburger.TOPPING_MAYO = [20, 5];
     Hamburger.TOPPING_SPICE = [15, 0];
     Hamburger.TOPPING = [];
-    this.ingridients = [];
-    this.stuffing = stuffing;
-    // if (size === 'LARGE') {
-    //     // this.array = Hamburger.SIZE_LARGE;
-    //     this.array.push(Hamburger.SIZE_LARGE);
-    // } else this.array.push(Hamburger.SIZE_SMALL);
-    // if (this.stuffing === 'cheese') {
-    //     this.array.push(Hamburger.STUFFING_CHEESE);
-    // } else if (this.stuffing === 'salad') {
-    //     this.array.push(Hamburger.STUFFING_SALAD);
-    // } else this.array.push(Hamburger.STUFFING_POTATO);
+    this.ingrids = [];
     if (size === 'LARGE') {
-        this.ingridients.push(['LARGE', Hamburger.SIZE_LARGE]);
-    } else this.ingridients.push(['LARGE', Hamburger.SIZE_SMALL]);
+        this.ingrids.push(['LARGE', Hamburger.SIZE_LARGE]);
+    } else this.ingrids.push(['SMALL', Hamburger.SIZE_SMALL]);
+    if (stuffing === 'cheese') {
+        this.ingrids.push(['Cheese', Hamburger.STUFFING_CHEESE]);
+    } else if (stuffing === 'salad') {
+        this.ingrids.push(['Salad', Hamburger.STUFFING_SALAD]);
+    } else this.ingrids.push(['Potato', Hamburger.STUFFING_POTATO]);
 };
 
 Hamburger.prototype.addTopping = function (topping) {
     for (let i = 0; i < topping.length; i++) {
-        if (topping === 'spice') {
-            this.ingridients.push(['Spice',Hamburger.TOPPING_SPICE]);
-        } else this.ingridients.push(['MAYO',Hamburger.TOPPING_MAYO]);
+        if (topping[i] === 'spice') {
+            this.ingrids.push(['Spice',Hamburger.TOPPING_SPICE]);
+        } else this.ingrids.push(['MAYO',Hamburger.TOPPING_MAYO]);
     }
 };
 
@@ -39,7 +34,12 @@ Hamburger.prototype.addTopping = function (topping) {
  * @throws {HamburgerException}  При неправильном использовании
  */
 Hamburger.prototype.removeTopping = function (topping) {
-
+    console.log(topping);
+    for (var i = 0; i < this.ingrids.length; i++) {
+        if (this.ingrids[i][0] === topping) {
+            delete this.ingrids[i];
+        }
+     }
 };
 /**
  * Получить список добавок.
@@ -67,14 +67,27 @@ Hamburger.prototype.getStuffing = function () {
  * @return {Number} Цена в тугриках
  */
 Hamburger.prototype.calculatePrice = function () {
-
+    var price = 0;
+    for (var i = 0; i < this.ingrids.length; i++) {
+        price += this.ingrids[i][1][0];
+    }
+    return price;
 };
 /**
  * Узнать калорийность
  * @return {Number} Калорийность в калориях
  */
 Hamburger.prototype.calculateCalories = function () {
+    var calories = 0;
+    for (var i = 0; i < this.ingrids.length; i++) {
+        calories += this.ingrids[i][1][1];
+    }
+    return calories;
+};
 
+Hamburger.prototype.render = function () {
+    caloriesOutput.innerHTML = 'Callories: ' + this.calculateCalories();
+    priceOutput.innerHTML = 'Price: ' + this.calculatePrice();
 };
 
 var submit = document.getElementsByClassName('hamburger__submit')[0];
@@ -82,6 +95,8 @@ var submit = document.getElementsByClassName('hamburger__submit')[0];
 sizeButtons = document.getElementsByClassName('hamburger__size-button');
 stuffingButtons = document.getElementsByClassName('hamburger__stuffing-select-option');
 toppingButtons = document.getElementsByClassName('hamburger__topping-input');
+priceOutput = document.getElementsByClassName('hamburger__result-price')[0];
+caloriesOutput = document.getElementsByClassName('hamburger__result-calories')[0];
 
 submit.addEventListener('click', function (event) {
     var size;
@@ -102,13 +117,18 @@ submit.addEventListener('click', function (event) {
     for (let i = 0; i < toppingButtons.length; i++) {
         if (toppingButtons[i].checked) {
             topping.push(toppingButtons[i].value);
-            console.log(topping);
         }
     }
     event.preventDefault();
     var newBurger = new Hamburger(size, stuffing);
-    newBurger.addTopping(topping);
     console.log(newBurger);
-    newBurger.calculateCalories();
-    newBurger.calculatePrice();
+    newBurger.addTopping(topping);
+    newBurger.render();
+    console.log(newBurger);
 });
+
+newBurger2 = new Hamburger('LARGE', 'cheese');
+newBurger2.addTopping(['MAYO']);
+console.log(newBurger2);
+newBurger2.removeTopping('MAYO');
+console.log(newBurger2);
