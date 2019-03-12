@@ -11,10 +11,15 @@
 //
 // calculate(555, arr1, arr2);
 
-
+var buttons = document.getElementsByClassName('button');
 var button1 = document.getElementsByClassName('button')[0];
 var button2 = document.getElementsByClassName('button')[1];
 var button3 = document.getElementsByClassName('button')[2];
+// for (var i = 0; i < buttons.length; i++) ((i) => {
+//     buttons[i].addEventListener('click', function () {
+//         console.log(i);
+//     })
+// })(i);
 button1.addEventListener('click', counter());
 button2.addEventListener('click', counter());
 button3.addEventListener('click', (function () {

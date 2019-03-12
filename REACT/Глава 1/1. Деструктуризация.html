@@ -27,8 +27,8 @@
         
         var objectExample = {
             name: "Object",
-            number: 001
-        }
+            number: 1
+        };
         
         console.log(objectExample.name);
         
@@ -38,35 +38,28 @@
                 height: 200
             },
             items: ["first", "second"]
-        }
-        
+        };
         console.log(options.size.height);
         console.log(options.items[0]);
-        
+
         const { title = "MyTitle", size: {width, height}, items: [item1, item2]} = options;
-        
 //        console.log(abc.size.height);
 //        console.log(abc.items[0]);
         console.log(height + 100);
 //        console.log(abc.size.height + 123)
         console.log(item1);
-        
+
         var [firstName, lastName, ...rest] = "Я люблю мандарины".split(" ");
         console.log(firstName);
         console.log(lastName);
         console.log(rest[0]);
 //        console.log(rest[1]);
-        
+
         var arr = [firstName, lastName, ...rest] = "Привет, как дела".split(" ");
         console.log(arr);
         console.log(firstName);
         console.log(lastName);
         console.log(rest[0]);
-    
-
-
-        
     </script>
-
 </body>
 </html>

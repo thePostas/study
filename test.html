@@ -53,12 +53,12 @@
 ////        arr.shift[0];
 ////        console.log(arr);
 //        
-//        function Counter() {
-//            var count = 0;
-//            return function() {
-//                return count++;
-//            }
-//        }
+       function Counter() {
+           var count = 0;
+           return function() {
+               return count++;
+           }
+       }
 //        
 //        var counter = Counter();
 //        console.log(counter());
@@ -67,6 +67,23 @@
 //        console.log(counter());
 //        console.log(counter());
 //        console.log(counter());
+//         var counter = function () {
+//             count = 0;
+//             return function () {
+//                 return count++;
+//             }
+//         };
+//         var counter2 = counter();
+//         console.log(counter2());
+//         console.log(counter2());
+//         console.log(counter2());
+//         console.log(counter2());
+//
+//         var counter3 = Counter();
+//         console.log(counter3());
+//         console.log(counter3());
+//         console.log(counter3());
+//         console.log(counter3());
         </script>
 </body>
 </html>

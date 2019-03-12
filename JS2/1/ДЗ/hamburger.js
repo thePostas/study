@@ -20,9 +20,16 @@ var Hamburger = function (size, stuffing) {
 
 Hamburger.prototype.addTopping = function (topping) {
     for (let i = 0; i < topping.length; i++) {
-        if (topping[i] === 'spice') {
-            this.ingrids.push(['Spice',Hamburger.TOPPING_SPICE]);
-        } else this.ingrids.push(['MAYO',Hamburger.TOPPING_MAYO]);
+        try {
+            if (topping[i] === 'spice') {
+                this.ingrids.push(['Spice',Hamburger.TOPPING_SPICE]);
+            } else if (topping[i] === 'MAYO') {
+                this.ingrids.push(['MAYO',Hamburger.TOPPING_MAYO]);
+            } else throw new Error('Неверный тип начинки');
+        } catch(e) {
+            HamburgerException(e);
+        }
+
     }
 };
 
@@ -60,7 +67,7 @@ Hamburger.prototype.getSize = function () {
  * Узнать начинку гамбургера
  */
 Hamburger.prototype.getStuffing = function () {
-
+    throw ('error');
 };
 /**
  * Узнать цену гамбургера
@@ -89,6 +96,10 @@ Hamburger.prototype.render = function () {
     caloriesOutput.innerHTML = 'Callories: ' + this.calculateCalories();
     priceOutput.innerHTML = 'Price: ' + this.calculatePrice();
 };
+
+function HamburgerException (e) {
+    console.log(e);
+}
 
 var submit = document.getElementsByClassName('hamburger__submit')[0];
 
@@ -129,6 +140,8 @@ submit.addEventListener('click', function (event) {
 
 newBurger2 = new Hamburger('LARGE', 'cheese');
 newBurger2.addTopping(['MAYO']);
+newBurger2.addTopping(['spice']);
+newBurger2.addTopping(['spicee']);
 console.log(newBurger2);
-newBurger2.removeTopping('MAYO');
+// newBurger2.removeTopping('MAYO');
 console.log(newBurger2);
