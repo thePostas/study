@@ -21,10 +21,10 @@
     var currentFormat;
     var error = [true, true, true];
     button.addEventListener('click', function (event) {
+        event.preventDefault();
         for (var i = 0; i < inputs.length; i++) {
-            if (!inputs[i].checkValidity()) {
+            if (!inputs[i].checkValidity() || !inputs.value) {
                 console.log(inputs[i].checkValidity());
-                event.preventDefault();
                 inputs[i].parentNode.lastChild.classList.add('error');
                 inputs[i].parentNode.lastChild.innerHTML = 'error';
                 console.log(error);
@@ -32,7 +32,7 @@
                 inputs[i].parentNode.lastChild.classList.remove('error');
                 inputs[i].parentNode.lastChild.innerHTML = '';
             }
-            if (!error) {
+            if (!error[0] && !error[1] && !error[2]) {
                 form.submit();
             }
         }
@@ -54,6 +54,7 @@
                 inputs[i].setCustomValidity('');
                 inputs[i].style.outlineColor = 'green';
                 inputs[i].style.borderColor = 'green';
+                error[i] = false;
             }
         });
     }
