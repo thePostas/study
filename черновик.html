@@ -1,23 +1,48 @@
-           <!DOCTYPE html>
-           <html lang="en">
-           <head>
-               <meta charset="UTF-8">
-               <title>Document</title>
-           </head>
-           <body>
-                <script>
-                var car = {
-                    maxSpeed: 240,
-                    odometr: 25000,
-                    a: 20,
-                    func: function(this.car, miles) {
-                    this.odometr += miles;
-                    return this;
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Практический пример использования замыкания</title> 
+<meta charset="utf-8"> 
+<style> 
+body { 
+font-family: Arial, sans-serif; 
+font-size: 14px; 
+} 
 
-                }
-                }            
-                var work = car.func(car, 488);
-                    console.log(work);
-               </script>
-           </body>
-           </html>
+h1 { 
+font-size: 1.5em; 
+} 
+h2 { 
+font-size: 1.2em; 
+} 
+</style> 
+</head> 
+<body> 
+
+<h2>Выберите размер шрифта</h2> 
+<br/> 
+<button id="size_12">12</button> 
+<button id="size_16">16</button> 
+<button id="size_20">20</button> 
+<br/><br/> 
+<p>Здесь написан какой-то текст исторического романа.</p> 
+<h1>Том первый. Глава вторая.</h1> 
+<p>Продолжение увлекательной истории...</p> 
+
+<script> 
+function ChangeSize(newSize) { 
+return function() { 
+document.body.style.fontSize = newSize + 'px'; 
+}; 
+} 
+
+var size12 = ChangeSize(12); 
+var size16 = ChangeSize(16); 
+var size20 = ChangeSize(20); 
+
+document.getElementById('size_12').onclick = size12; 
+document.getElementById('size_16').onclick = size16; 
+document.getElementById('size_20').onclick = size20; 
+</script> 
+</body> 
+</html>

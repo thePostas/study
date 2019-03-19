@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    function numbersUpTo(nums, k) {
+        var result = [];
+        for (var i = 0; i < nums.length; i++) {
+            for (var j = i+1; j < nums.length; j++) {
+                if (nums[i] + nums[j] === k) {
+                    for (var d = j+1; d < nums.length; d++) {
+                        if (nums[i] === nums[d] || nums[j] === nums[d]) {
+                            delete nums[d];
+                        }
+                    }
+                    result.push(nums[i]);
+                    result.push(nums[j]);
+                }
+            }
+        }
+        return result;
+    }
+    console.log(numbersUpTo([1, 3, 2, 4, 20, 11, 2, 1, 3], 5));
+</script>
+</body>
+</html>

@@ -13,42 +13,47 @@
 
 
 (function validation () {
-    var form = document.getElementsByClassName('form')[0];1111ё12вы
+    var form = document.getElementsByClassName('form')[0];
     var inputs = document.getElementsByClassName('form-input');
     var tel = document.getElementsByClassName('tel')[0];
     var button = document.getElementsByClassName('button')[0];
     var formats = [/\+\d{1,3}-\d{3}-\d{3}-\d{2}-\d{2}/, /[A-z]/, /[A-z]/];
     var currentFormat;
-    var error = true;
+    var error = [];
     button.addEventListener('click', function (event) {
         for (var i = 0; i < inputs.length; i++) {
             if (!inputs[i].checkValidity()) {
+                console.log(inputs[i].checkValidity());
                 event.preventDefault();
-                var error = document.createElement('span');
-                error.innerHTML = 'incorrect';
-                error.style.color = 'red';
-                inputs[i].parentNode.appendChild(error);
+                inputs[i].parentNode.lastChild.classList.add('error');
+                inputs[i].parentNode.lastChild.innerHTML = 'error';
+            } else {
+                inputs[i].parentNode.lastChild.classList.remove('error');
+                inputs[i].parentNode.lastChild.innerHTML = '';
             }
-            if (error === false) {
+            if (!error) {
                 form.submit();
             }
         }
     });
 
     for (let i = 0; i < inputs.length; i++) {
+        // inputs[i].pattern = formats[i];
         inputs[i].addEventListener('input', function () {
             currentFormat = formats[i];
-            if(currentFormat.test(inputs[i].value)) {
+
+            if(!currentFormat.test(inputs[i].value) || !inputs[i].value) {
+                inputs[i].setCustomValidity('123');
+                inputs[i].style.outlineColor = 'red';
+                inputs[i].style.borderColor = 'red';
+                error[i] = true;
+                // button.disabled = true;
+            } else {
                 // button.disabled = false;
                 inputs[i].setCustomValidity('');
                 inputs[i].style.outlineColor = 'green';
                 inputs[i].style.borderColor = 'green';
-            } else {
-                inputs[i].setCustomValidity('123');
-                error = true;
-                inputs[i].style.outlineColor = 'red';
-                inputs[i].style.borderColor = 'red';
-                // button.disabled = true;
+                error[i] = false;
             }
         });
     }
