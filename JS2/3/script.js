@@ -19,7 +19,7 @@
     var button = document.getElementsByClassName('button')[0];
     var formats = [/\+\d{1,3}-\d{3}-\d{3}-\d{2}-\d{2}/, /[A-z]/, /[A-z]/];
     var currentFormat;
-    var error = [];
+    var error = [true, true, true];
     button.addEventListener('click', function (event) {
         for (var i = 0; i < inputs.length; i++) {
             if (!inputs[i].checkValidity()) {
@@ -27,6 +27,7 @@
                 event.preventDefault();
                 inputs[i].parentNode.lastChild.classList.add('error');
                 inputs[i].parentNode.lastChild.innerHTML = 'error';
+                console.log(error);
             } else {
                 inputs[i].parentNode.lastChild.classList.remove('error');
                 inputs[i].parentNode.lastChild.innerHTML = '';
@@ -53,7 +54,6 @@
                 inputs[i].setCustomValidity('');
                 inputs[i].style.outlineColor = 'green';
                 inputs[i].style.borderColor = 'green';
-                error[i] = false;
             }
         });
     }
