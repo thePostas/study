@@ -1,0 +1,77 @@
+.slider {
+    background-color: bisque;
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.slider__image-block {
+    height: 100%;
+    border-radius: 5px;
+}
+
+.slider-image {
+    opacity: 1;
+    transition: all 1s;
+}
+
+
+.slider__controls {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    right: 45%;
+}
+
+.slider__button {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #15FFFF;
+    border: 2px solid #15FFFF;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.slider__button_active {
+    background-color: #4040FF;
+    transform: scale(1.5);
+}
+
+.slider__arrow {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(155,155,255, 0.5);
+    border: 1px solid #cacaca;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 45%;
+    cursor: pointer;
+}
+
+.slider__arrow:active {
+}
+
+.slider__arrow-span {
+    display: block;
+    width: 25px;
+    height: 25px;
+    border: 2px solid #000000;
+    position: absolute;
+    border-right: none;
+    border-bottom: none;
+    transform: rotate(-45deg);
+    top: 12px;
+    left: 17px;
+}
+
+.slider__back {
+    left: 20px;
+    opacity: 0.2;
+}
+
+.slider__forward {
+    right: 20px;
+    transform: rotate(180deg);
+}

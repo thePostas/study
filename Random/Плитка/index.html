@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="plates">
+        <div class="plates__plate"><span class="plates__span">V</span></div>
+        <div class="plates__plate"><span class="plates__span">V</span></div>
+        <div class="plates__plate"><span class="plates__span">V</span></div>
+        <div class="plates__plate"><span class="plates__span">V</span></div>
+        <div class="plates__plate"><span class="plates__span">V</span></div>
+        <div class="plates__plate"><span class="plates__span">V</span></div>
+        <div class="plates__plate"><span class="plates__span">V</span></div>
+        <div class="plates__plate"><span class="plates__span">V</span></div>
+    </section>
+    
+    <section class="another-plates">
+        
+        <label class="another__plates-label"><input type="radio" name="choose" id="radio-1" class="another-plates__plate" value="1"><span class="another-plates__span">V</span></label>
+        <label class="another__plates-label"><input type="radio" name="choose" id="radio-2" class="another-plates__plate" value="2"><span class="another-plates__span">V</span></label>
+        <label class="another__plates-label"><input type="radio" name="choose" id="radio-3" class="another-plates__plate" value="3"><span class="another-plates__span">V</span></label>
+        <label class="another__plates-label"><input type="radio" name="choose" id="radio-4" class="another-plates__plate" value="4"><span class="another-plates__span">V</span></label>
+        <label class="another__plates-label"><input type="radio" name="choose" id="radio-5" class="another-plates__plate" value="5"><span class="another-plates__span">V</span></label>
+        <label class="another__plates-label"><input type="radio" name="choose" id="radio-6" class="another-plates__plate" value="6"><span class="another-plates__span">V</span></label>
+        <label class="another__plates-label"><input type="radio" name="choose" id="radio-7" class="another-plates__plate" value="7"><span class="another-plates__span">V</span></label>
+        <label class="another__plates-label"><input type="radio" name="choose" id="radio-8" class="another-plates__plate" value="8"><span class="another-plates__span">V</span></label>
+
+    </section>
+    
+    <script>
+        var plates = document.getElementsByClassName("plates__plate");
+        for (let i = 0; i < plates.length; i++) {
+            plates[i].addEventListener('click', () => {
+            for (let j = 0; j < plates.length; j++) {
+              if (plates[j].classList.contains("plates__plate_selected")) 
+                plates[j].classList.remove("plates__plate_selected");
+            };
+               plates[i].classList.add("plates__plate_selected"); 
+            });
+        }
+    </script>
+</body>
+</html>

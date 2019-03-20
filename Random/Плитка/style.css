@@ -1,0 +1,24 @@
+.plates, .another-plates {
+    display: flex;  
+    background-color:  white;
+}
+
+.plates__plate, .another__plates-label {
+    width: 50px;
+    height: 50px;
+    background-color:  bisque;
+    margin: 5px;
+    text-align: center;
+    line-height: 1;
+    color: cadetblue;
+    font-size: 50px;
+    border: 1px solid #cacaca;
+}
+
+.plates__span, .another-plates__plate, .another-plates__span {
+    display: none;
+}
+
+.plates__plate_selected > .plates__span, .another-plates__plate:checked ~ .another-plates__span {
+    display: block;
+}
