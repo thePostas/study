@@ -22,15 +22,15 @@
     var error = [true, true, true];
     button.addEventListener('click', function (event) {
         event.preventDefault();
-        for (var i = 0; i < inputs.length; i++) {
-            if (!inputs[i].checkValidity() || !inputs.value) {
-                console.log(inputs[i].checkValidity());
+        for (let i = 0; i < inputs.length; i++) {
+            if (!inputs[i].checkValidity() || !inputs[i].value) {
                 inputs[i].parentNode.lastChild.classList.add('error');
                 inputs[i].parentNode.lastChild.innerHTML = 'error';
-                console.log(error);
+                inputs[i].style.borderColor = 'red';
             } else {
                 inputs[i].parentNode.lastChild.classList.remove('error');
                 inputs[i].parentNode.lastChild.innerHTML = '';
+                inputs[i].style.borderColor = 'green';
             }
             if (!error[0] && !error[1] && !error[2]) {
                 form.submit();
@@ -44,7 +44,7 @@
             currentFormat = formats[i];
 
             if(!currentFormat.test(inputs[i].value) || !inputs[i].value) {
-                inputs[i].setCustomValidity('123');
+                inputs[i].setCustomValidity('error');
                 inputs[i].style.outlineColor = 'red';
                 inputs[i].style.borderColor = 'red';
                 error[i] = true;
