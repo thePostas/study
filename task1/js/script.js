@@ -5,7 +5,6 @@
     var reverse = localStorage.getItem('reverseMemory') || false;
     console.log(localStorage.getItem('currentMemory'));
     (function switchLight() {
-        seconds = timers[current]/1000;
         setInterval(function () {
                 for (let i = 0; i < 3; i++) {
                     colors[i].classList.remove('active');
@@ -15,6 +14,7 @@
                 colors[1].innerHTML = seconds;
             } else colors[1].innerHTML = '';
             seconds--;
+            localStorage.setItem('secondsMemory', seconds);
             if (seconds < 4 && !colors[current].classList.contains('yellow')) {
                     setTimeout(function() {colors[reverse ? 2 : 0].classList.add('active')}, 500);
                     setTimeout(function() {colors[reverse ? 2 : 0].classList.remove('active')}, 1000);
