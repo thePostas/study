@@ -59,3 +59,23 @@
         });
     }
 })();
+
+var a = 'vasya vs petya'.replace(/(vasya|petya)/g, function (str) {
+    return str.toUpperCase();
+});
+
+console.log(a);
+
+(function polinom() {
+    var input = prompt().split(' ').join('').split(',').join('').toLowerCase();
+    var reverse = input.split('').reverse().join('');
+    console.log(input);
+    console.log(reverse);
+    var result = true;
+    for (var i = 0; i < input.length; i++) {
+        if (input[i] !== reverse[i]) {
+            result = false;
+        }
+    }
+    console.log(result);
+})();

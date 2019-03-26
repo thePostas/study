@@ -16,29 +16,26 @@
         // var foo2 = foo.bind(null);
         // console.log(foo2(2, 3));
         var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-
-                }
-            }
-        };
         xhr.open('GET', 'https://thepostas.github.io/', true);
         xhr.timeout = 15000;
         xhr.ontimeout = function () {
             console.log('время вышло');
-        }
+        };
         xhr.send(null);
-
-        var userObj = '{"name":"Postas", "surname":"Postavtsev", "birthday":"1988-11-10T12:00:00.000Z"}';
-        var user = JSON.parse(userObj, function (key, value) {
-            if (key === 'birthday') {
-                return new Date(value);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var userObj = '{"name":"Postas", "surname":"Postavtsev", "birthday":"1988-11-10T12:00:00.000Z"}';
+                    var user = JSON.parse(userObj, function (key, value) {
+                        if (key === 'birthday') {
+                            return new Date(value);
+                        }
+                        return value;
+                    });
+                    console.log(user.birthday.getMonth());
+                }
             }
-            return value;
-        });
-        console.log(user.birthday.getMonth());
-
+        };
     </script>
 </body>
 </html>

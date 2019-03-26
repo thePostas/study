@@ -1,0 +1,47 @@
+@font-face {
+    font-family: "digital";
+    src: url(../fonts/digital.ttf) format("truetype");
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.trafficlight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    width: 120px;
+    background-color: #7f8591;
+    border-radius: 15px;
+}
+
+.light {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    filter: opacity(0.3);
+    font: 48px digital, sans-serif;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
+
+.active {
+    filter: opacity(1);
+}
