@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button class="button">click me</button>
+    <button class="button">click me</button>
+    <button class="button">click me</button>
+    <script>
+        const buttons = document.getElementsByClassName('button');
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', ((i) => {
+                var count = 0;
+                return function () {
+                    console.log(count++);
+                }
+            })(i));
+        }
+        function Counter() {
+            return function () {
+                var count = 0;
+                return function () {
+                    return count++;
+                }
+            }
+        }
+
+        var counter = Counter()();
+        console.log(counter());
+        console.log(counter());
+        console.log(counter());
+        console.log(counter());
+        console.log(counter());
+        console.log(counter());
+
+        var Person = {
+            _nick: '',
+            constructor(name, age, gender) {
+
+                this.name = name;
+                this.age = age;
+                this.gender = gender;
+                return this;
+            },
+            setNick(nick) {
+                this._nick = nick;
+            },
+            getNick() {
+                console.log(this._nick);
+            },
+            print() {
+                for (var key in this) {
+                    console.log(key + ' ' + this[key]);
+                }
+            }
+        };
+
+        Object.defineProperties(Person, {
+            'constructor': {
+                enumerable: false
+            },
+            'print': {
+                enumerable: false
+            }
+        });
+
+        var person1 = Object.create(Person.constructor('Alexander', 29, 'male'));
+        console.log(person1);
+        person1.print();
+        person1.setNick('Postas');
+        person1.getNick();
+
+        var Developer = {
+            constructor(name, age, gender, skills) {
+                Person.constructor.apply(this, arguments);
+                this.skills = skills || [];
+                return this;
+            }
+        }
+        var developer1 = Object.create(Developer.constructor('Jack', 38, 'male', ['js', 'css', 'html']));
+        console.log(developer1);
+
+        function Human(name, age, gender) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            return this;
+        }
+
+        Human.prototype.print = function () {
+          for (var key in this) {
+              console.log(key + ' ' + this[key]);
+          }
+        };
+
+        var person2 = new Human('Alexander', 30, 'male');
+        person2.print();
+
+        function Developer2(name, age, gender, skills) {
+            Human.apply(this, arguments);
+            this.skills = skills;
+            return this;
+        }
+
+        Developer2.prototype = Object.create(Human.prototype);
+        Developer2.constructor = Developer2;
+
+        var dev2 = new Developer2('Nick', 25, 'male', ['js', 'css', 'html']);
+        dev2.print();
+        console.log(dev2);
+
+        for (var i = 0; i < 3; i++) ((i) =>{
+            setTimeout(function () {
+                console.log(i);
+            }, 1000);
+        })(i);
+    </script>
+</body>
+</html>

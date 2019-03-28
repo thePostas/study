@@ -1,15 +1,3 @@
-import Vue from 'vue.min'
-import VueRouter from 'vue-router'
-
-Vue.use(VueRouter);
-Vue.use(Vue);
-
-var router = new VueRouter({
-    routes: [
-        { path: 'red', component: red}
-    ]
-})
-
 (function trafficLight() {
     let {timers, colors} = {timers: [3000, 1000, 3000], colors: document.getElementsByClassName('traffic__light')};
     var current = localStorage.getItem('currentMemory') || 0;
