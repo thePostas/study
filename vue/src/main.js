@@ -2,18 +2,18 @@ let red = {template: '    <div class="traffic">\n' +
     '        <div class="traffic__light traffic__light-red active"></div>\n' +
     '        <div class="traffic__light traffic__light-yellow"></div>\n' +
     '        <div class="traffic__light traffic__light-green"></div>\n' +
-    '    </div>'};
+    '    </div>', script: localStorage.clear() + trafficLight()};
 
 let yellow = {template: '    <div class="traffic">\n' +
     '        <div class="traffic__light traffic__light-red"></div>\n' +
     '        <div class="traffic__light traffic__light-yellow active"></div>\n' +
     '        <div class="traffic__light traffic__light-green"></div>\n' +
-    '    </div>'};
+    '    </div>', script: localStorage.clear() + trafficLight()};
 let green = {template: '    <div class="traffic">\n' +
     '        <div class="traffic__light traffic__light-red"></div>\n' +
     '        <div class="traffic__light traffic__light-yellow"></div>\n' +
     '        <div class="traffic__light traffic__light-green active"></div>\n' +
-    '    </div>'};
+    '    </div>', script: localStorage.clear() + trafficLight()};
 
 const routes = [
     {path: '/red', component: red},
@@ -30,9 +30,17 @@ const app = new Vue({
     router
 }).$mount('#app');
 
-(function trafficLight() {
+function trafficLight () {
+    function check() {
+        for (var i = 0; i < colors.length; i++) {
+            if (colors[i].classList.contains('active')) {
+                var current = i;
+            }
+        }
+        return current
+    }
     let {timers, colors} = {timers: [10000, 3000, 15000], colors: document.getElementsByClassName('traffic__light')};
-    var current = localStorage.getItem('currentMemory') || 0;
+    var current = localStorage.getItem('currentMemory') || check() ||  0;
     var seconds = localStorage.getItem('secondsMemory') || timers[current]/1000;
     var isReverse = !!(localStorage.getItem('reverseMemory')) || '';
     (function switchLight() {
@@ -70,4 +78,4 @@ const app = new Vue({
 
         }, 1000);
     })();
-})();
+}
