@@ -28,7 +28,11 @@
         };
         function calculateArea(...args) {
             console.log(args.length);
-            if (args.length === 2) {
+            if (args.length === 1) {
+                Obj.figure = 'Круг';
+                Obj.area = Math.PI * Math.pow(args[0], 2).toFixed(3);
+            }
+            else if (args.length === 2) {
                 if (args[0] === args[1]) {
                     Obj.figure = 'Квардат';
                     Obj.area = args[0] * args[1];
@@ -37,7 +41,7 @@
                     Obj.figure = 'Прямоугольник';
                     Obj.area = args[0] * args[1];
                 }
-            } if (args.length = 3) {
+            } if (args.length === 3) {
                 let b;
                 let h;
                 if (args[0] === args[1] || args[1] === args[2]) {
@@ -52,15 +56,45 @@
                         h = args[1];
                     }
                     Obj.area = 1/2*b*h;
+                } else {
+                    Obj.figure = 'Треугольник';
+                    var p = (args[0] + args[1] + args[2]) / 2;
+                    Obj.area = +(Math.sqrt(p * (p - args[0]) * (p - args[1]) * (p - args[2]))).toFixed(3);
                 }
             }
             Obj.input = args;
             console.log(Obj);
         }
 
+        calculateArea(10);
         calculateArea(5, 5);
         calculateArea(5, 6);
         calculateArea(5, 5, 10);
+        calculateArea(5, 7, 10);
+
+        // class TextObj {
+        //     constructor() {
+        //         this.text = 'olol'
+        //     }
+        //     }
+        // var textObj1 = new TextObj();
+        //
+        //
+        // function func(times) {
+        //     var str = '';
+        //     for (let i = 0; i < times; i++) {
+        //         str+= this.text;
+        //     }
+        //     console.log(str);
+        // }
+        //
+        // // TextObj.prototype.func = TextObj.prototype.func = function() {
+        // //     console.log(1);
+        // // };
+        //
+        // TextObj.prototype.func = TextObj.prototype.func || func;
+        //
+        // textObj1.func(5);
 
     </script>
 </body>
