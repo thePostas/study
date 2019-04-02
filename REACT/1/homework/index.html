@@ -30,7 +30,7 @@
             console.log(args.length);
             if (args.length === 1) {
                 Obj.figure = 'Круг';
-                Obj.area = Math.PI * Math.pow(args[0], 2).toFixed(3);
+                Obj.area = +(Math.PI * Math.pow(args[0], 2)).toFixed(3);
             }
             else if (args.length === 2) {
                 if (args[0] === args[1]) {
@@ -72,29 +72,40 @@
         calculateArea(5, 5, 10);
         calculateArea(5, 7, 10);
 
-        // class TextObj {
-        //     constructor() {
-        //         this.text = 'olol'
-        //     }
-        //     }
-        // var textObj1 = new TextObj();
-        //
-        //
-        // function func(times) {
-        //     var str = '';
-        //     for (let i = 0; i < times; i++) {
-        //         str+= this.text;
-        //     }
-        //     console.log(str);
-        // }
-        //
-        // // TextObj.prototype.func = TextObj.prototype.func = function() {
-        // //     console.log(1);
-        // // };
-        //
-        // TextObj.prototype.func = TextObj.prototype.func || func;
-        //
-        // textObj1.func(5);
+       //  class TextObj {
+       //      constructor() {
+       //          this.text = 'olol'
+       //      }
+       //      }
+       //  var textObj1 = new TextObj();
+       //
+       //
+       // function func(times) {
+       //      var str = '';
+       //      for (let i = 0; i < times; i++) {
+       //          str+= this.text;
+       //      }
+       //      console.log(str);
+       //      console.log(this);
+       //  }
+       //
+       //  // TextObj.prototype.func = TextObj.prototype.func = function() {
+       //  //     console.log(1);
+       //  // };
+       //
+       //  TextObj.prototype.func = TextObj.prototype.func || func;
+       //
+       //  textObj1.func(5);
+
+        function getVisa(resolve) {
+            setTimeout(function () {
+                var visa = {};
+                resolve(visa);
+            }, 1000);
+        }
+        getVisa(function (visa) {
+            console.log('Виза получена')
+        })
 
     </script>
 </body>
