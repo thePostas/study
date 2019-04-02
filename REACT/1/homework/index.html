@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function loop(times, callback) {
+            if (typeof callback === 'function') {
+               for (let i = 0; i < times; i++) {
+                   console.log('ок');
+               }
+            } else console.log('косяк');
+        }
+
+        loop(5, function () {
+            
+        });
+        
+        let Obj = {
+            figure: '',
+            area: '',
+            input: ''
+        };
+        function calculateArea(...args) {
+            console.log(args.length);
+            if (args.length === 2) {
+                if (args[0] === args[1]) {
+                    Obj.figure = 'Квардат';
+                    Obj.area = args[0] * args[1];
+
+                } else {
+                    Obj.figure = 'Прямоугольник';
+                    Obj.area = args[0] * args[1];
+                }
+            } if (args.length = 3) {
+                let b;
+                let h;
+                if (args[0] === args[1] || args[1] === args[2]) {
+                    Obj.figure = 'Равнобедренный треугольник';
+                    Obj.area = args[0] * args[1];
+                    if (args[0] === args[1])  {
+                        b = args[2];
+                        h = args[0];
+                    }
+                    else if (args[1] === args[2]) {
+                        b = args[0];
+                        h = args[1];
+                    }
+                    Obj.area = 1/2*b*h;
+                }
+            }
+            Obj.input = args;
+            console.log(Obj);
+        }
+
+        calculateArea(5, 5);
+        calculateArea(5, 6);
+        calculateArea(5, 5, 10);
+
+    </script>
+</body>
+</html>

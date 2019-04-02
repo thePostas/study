@@ -84,6 +84,37 @@
         developer1 = new Developer('Postas', '30', ['css', 'js', 'html']);
         developer1.show();
         console.log(developer1);
+
+        var promise = new Promise((resolve, reject) => {
+            setTimeout(function () {
+                resolve('Успешно');
+                reject('Ошибка');
+            },2000)
+        } );
+
+        promise.then((result) => {
+            console.log('Ок');
+        }, (error) => {
+            console.log('Ошибка');
+        });
+
+        let dataPromiise = [];
+        for (let i = 0; i < 10; i++) {
+            dataPromiise.push(new Promise((resolve, reject)=> {
+                //AJAX запрос
+                setTimeout(function () {
+                    resolve('Успешно');
+                    reject('Ошибка');
+                },2000)
+            }))
+        };
+
+        Promise.all(dataPromiise).then((result) =>{
+            console.log('Все в порядке ' + result);
+        }, (error) => {
+            console.log('Ошибка ' + error);
+        });
+        console.log(dataPromiise);
     </script>
 </body>
 </html>
