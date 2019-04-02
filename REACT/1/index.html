@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function test() {
+            var count = [];
+            for (var i = 0; i < 10; i++) {
+                count.push(function () {
+                    console.log(i);
+                })
+            }
+            return count;
+        }
+
+        var counter = test();
+        counter[1]();
+        counter[2]();
+        counter[4]();
+        counter[5]();
+
+        let options = {
+            width: 500,
+            height: 300,
+            someKey: f = 'yo',
+            style: {
+                background: 'red'
+            },
+            items: ['1', '2', '3']
+        };
+
+        let {
+            width,
+            height,
+            someKey,
+            anotherKey: k = 10,
+            style: {
+                background
+            },
+            items : [item1, item2, item3]
+        } = options;
+        console.log(width, height, f, k, background, item1, item2, item3);
+
+        var obj = {
+            print: function () {
+                console.log(this);
+            }
+        }
+
+        class Person {
+            constructor(name, age) {
+                let _email = 'postas87@mail.ru';
+                this.name = name;
+                this.age = age;
+                this.getEmail = function () {
+                    console.log(_email);
+                }
+            }
+            show () {
+                for (var key in this) {
+                    console.log(key + ' ' + this[key]);
+                }
+            }
+        }
+
+        let person1 = new Person('Alexander', 30);
+        person1.show();
+        console.log(person1);
+        person1.getEmail();
+
+        class Developer extends Person {
+            constructor(name, age, skills) {
+                super(name, age);
+                this.skills = skills || [];
+            }
+        }
+
+        developer1 = new Developer('Postas', '30', ['css', 'js', 'html']);
+        developer1.show();
+        console.log(developer1);
+    </script>
+</body>
+</html>

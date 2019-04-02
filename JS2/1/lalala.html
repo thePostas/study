@@ -103,7 +103,7 @@
 
         function Developer2(name, age, gender, skills) {
             Human.apply(this, arguments);
-            this.skills = skills;
+            this.skills = skills || [];
             return this;
         }
 
