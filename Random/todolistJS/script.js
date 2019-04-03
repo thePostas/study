@@ -1,6 +1,6 @@
 (function toDoList() {
     let input = document.getElementsByClassName('todolist__controls-input')[0];
-    let count = 1;
+    let count = 0;
     let doneCount = 0;
     let tasks;
     let progressBar = document.getElementsByClassName('todolist__progressbar-completed')[0];
@@ -14,7 +14,7 @@
 
     addButton.addEventListener('click', function (evt) {
         evt.preventDefault();
-        if (input.value) {
+        if (input.value && input.value.length < 47) {
             createTask();
             input.value = '';
         }
@@ -40,24 +40,32 @@
         tasks = document.getElementsByClassName('todolist__task');
         taskDone = document.getElementsByClassName('todolist__task-button');
         let closeButtons = document.getElementsByClassName('todolist__task-close');
+        closeButtons[tasks.length-1].addEventListener('click', function (event) {
+            event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+            if (event.target.parentNode.classList.contains('todolist__task-done')) doneCount--;
+            if (count === 1 && doneCount === 0) progressBar.style.width = 0;
+            count--;
+            progressBar.style.width = doneCount / count * 100 + "%";
+            if (count > 6) {
+                block.style.height = +(height-= 60) + 'px';
+            }
+        });
+        count++;
+        progressBar.style.width = doneCount / count * 100 + "%";
         taskDone[tasks.length-1].addEventListener('click', function (evt) {
             evt.preventDefault();
             if (!evt.target.parentNode.classList.contains('todolist__task-done')) {
                 evt.target.parentNode.classList.add('todolist__task-done');
                 doneCount++;
             } else {
-                evt.target.parentNode.classList.remove('todolist__task-done')
+                evt.target.parentNode.classList.remove('todolist__task-done');
                 doneCount--;
-            }
+        }
+            console.log('count' + count);
+            console.log(doneCount);
             progressBar.style.width = doneCount / count * 100 + "%";
         });
-        closeButtons[tasks.length-1].addEventListener('click', function (event) {
-            event.target.parentNode.parentNode.removeChild(event.target.parentNode);
-            if (count > 6) {
-                block.style.height = +(height-= 60) + 'px';
-            }
-        });
-        count++;
+
     }
 
 })();
