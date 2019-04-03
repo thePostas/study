@@ -9,32 +9,83 @@
 </head>
 <body>
     <script>
-        function one(callback) {
-            setTimeout(function () {
-                console.log('one');
-                two();
-            }, 1000);
-        }
+        // function one(callback) {
+        //     setTimeout(function () {
+        //         console.log('one');
+        //         two();
+        //     }, 1000);
+        // }
+        //
+        // function two() {
+        //     console.log('two');
+        // }
+        //
+        // one(two);
+        //
+        //
+        // function one() {
+        //     setTimeout(function () {
+        //         console.log('one');
+        //     }, 1000);
+        // }
+        //
+        // function two() {
+        //     console.log('two');
+        // }
+        //
+        // one();
+        // two();
+        
+        // var fullName = 'Joe';
+        // var obj = {
+        //     fullName: 'jack',
+        //     prop: {
+        //         fullName: 'John',
+        //         print: function () {
+        //             return this.fullName;
+        //         }
+        //     }
+        // };
+        //
+        // console.log(obj.prop.fullName);
+        // console.log(obj.fullName);
+        // var a = obj.prop.print;
+        // var b = obj.prop.print();
+        // console.log(a());
+        // console.log(b);
+        //
+        // var f = function() {
+        //     this.x = 5;
+        //     (function() {
+        //         this.x = 3;
+        //     })();
+        //     console.log(this.x);
+        // };
+        //
+        // var obj = {x: 4, m: function() {
+        //         console.log(this.x);
+        //     }};
+        //
+        // f();
+        // new f();
+        // obj.m();
+        // new obj.m();
+        // f.call(f);
+        // obj.m.call(f);
+        var x = 5;
+        var objobj = {
+            x: 10,
+            print: function () {
+                return this.x
+            }
+        };
 
-        function two() {
-            console.log('two');
-        }
+        var a = Object.create(objobj);
+        console.log(a.x);
+        console.log(a.print());
+        var b = objobj.print;
+        console.log(b());
 
-        one(two);
-
-
-        function one() {
-            setTimeout(function () {
-                console.log('one');
-            }, 1000);
-        }
-
-        function two() {
-            console.log('two');
-        }
-
-        one();
-        two()
     </script>
 </body>
 </html>

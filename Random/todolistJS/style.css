@@ -1,0 +1,110 @@
+.todolist {
+    position: relative;
+    margin: 0 auto;
+    width: 512px;
+    height: 512px;
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+
+.todolist__inner {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+}
+
+.todolist__title {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.todolist__controls {
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+    width: 90%;
+}
+
+.todolist__progressbar {
+    border: 1px solid grey;
+    height: 50px;
+    width: 90%;
+
+}
+
+.todolist__progressbar-completed {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(190deg, rgba(0,36,17,1) 0%, rgba(9,121,35,1) 35%, rgba(1,255,0,1) 100%)
+}
+
+.todolist__task {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: relative;
+    width: 90%;
+    height: 50px;
+    background-color: #9ae2f4;
+    margin: 5px 0;
+}
+
+.todolist__controls {
+    box-sizing: border-box;
+    padding-left: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid grey;
+}
+
+.todolist__controls-add {
+    width: 50px;
+    height: 50px;
+}
+
+.todolist__task-close {
+    position: absolute;
+    transform: rotate(45deg);
+    right: 10px;
+    top: 25%;
+    font: 24px SansSerif;
+    cursor: pointer;
+    font-weight: 900;
+}
+
+.todolist__controls-input {
+    width: 80%;
+    height: 50%;
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    font-weight: bold;
+    font: 16px SansSerif;
+    background-color: #fff;
+}
+
+.todolist__task-input:focus {
+    background-color: #fff;
+}
+
+.todolist__task-close:active {
+    color: red;
+}
+
+.todolist__task-button {
+    position: absolute;
+    left: 10px;
+    top: 30%;
+}
+
+.todolist__task-done {
+    background-color: #0feb9e;
+}
