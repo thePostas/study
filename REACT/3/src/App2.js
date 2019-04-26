@@ -1,21 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Menu from './app/components/Menu/Menu';
+import KanbanBoard from './app/components/kanban/KanbanBoard';
+
 const app = document.getElementById('app');
 
 const items = [
     {
-        href: '/main',
-        title: 'Главная'
+        id: 1,
+        title: 'Освоить ReactJS',
+        description: 'Освоить библиотеку ReactJS v14.0+',
+        status: 'in-progress',
+        tasks: []
     },
     {
-        href: '/about',
-        title: 'О нас'
+        id: 2,
+        title: 'Написать приложение на ReactJS',
+        description: 'Kanban Board',
+        status: 'todo',
+        tasks: [
+            {
+                id: 1,
+                name: 'Изучить базовый синтаксис ReactJS',
+                done: true
+            },
+            {
+                id: 2,
+                name: 'Написать каркас приложения',
+                done: true
+            },
+            {
+                id: 3,
+                name: 'Улучшить приложение',
+                done: false
+            }
+        ]
     },
-    {
-        href: '/contacts',
-        title: 'Контакты'
-    }
 ];
 
-ReactDOM.render(<Menu items={items} h1={'Меню на React'}>Информация из Children</Menu>, app);
+ReactDOM.render(
+    <KanbanBoard cards={items} />,
+    app);
