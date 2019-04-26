@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Human {
+            constructor(name, age, dateOfBirth) {
+                this.name = name;
+                this.age = age;
+                this.dateOfBirth = dateOfBirth;
+            }
+            displayInfo() {
+                for (let key in this) {
+                    console.log(key + ' ' + this[key]);
+                }
+            }
+        }
+
+        class Employee extends Human {
+            constructor(name, age, dateOfBirth, salary, departament) {
+                super(name, age, dateOfBirth);
+                this.salary = salary;
+                this.departament = departament;
+            }
+        }
+
+        class Developer extends Employee {
+            constructor(name, age, dateOfBirth, salary, departament, manager){
+                super(name, age, dateOfBirth, salary, departament);
+                this.manager = manager;
+                manager.addDeveloper(this);
+        }
+        setManager(newManager) {
+                this.manager.deleteDeveloper(this.name);
+                this.manager = newManager;
+                this.manager.addDeveloper(this);
+        }
+        }
+
+        class Manager extends Employee {
+            constructor(name, age, dateOfBirth, salary, departament){
+                super(name, age, dateOfBirth, salary, departament);
+                this.developers = [];
+            }
+            addDeveloper(developer) {
+                this.developers.push(developer);
+            }
+            deleteDeveloper(developer) {
+                for (let key in this.developers) {
+                    if (developer === this.developers[key].name) {
+                        this.developers.splice(key, 1);
+                    }
+                }
+            }
+        }
+
+        let human1 = new Human('Nick', 21, '10.12.1998');
+        console.log(human1);
+        let manager1 = new Manager('Sam', '35', '30.05.1984', '$2000',  'development');
+        let manager2 = new Manager('Johnson', '38', '25.05.1981', '$2200',  'development');
+        let developer1 = new Developer('Mike', 26, '05.04.1994', '$1200', 'development', manager1);
+        developer1.displayInfo();
+        console.log(developer1);
+        let developer2 = new Developer('Leo', 25, '05.04.1993', '$1100', 'development', manager1);
+        console.log(manager1);
+    </script>
+</body>
+</html>
