@@ -1,0 +1,20 @@
+.header {
+    display: flex;
+    flex-grow: 1;
+    height: 200px;
+    background-color: #9ae2f4;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation__list {
+    display: flex;
+    list-style: none;
+}
+
+.navigation__list-item {
+    margin: 0 20px;
+}
