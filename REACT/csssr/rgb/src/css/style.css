@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.shapes {
+    display: flex;
+}
+
+.shape {
+    width: 65px;
+    height: 65px;
+    border: 1px solid black;
+    border-radius: 50%;
+}

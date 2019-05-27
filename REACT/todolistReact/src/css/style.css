@@ -56,7 +56,7 @@
     font-weight: bold;
 }
 
-.todolist__tasks {
+.todolist__task-list {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -95,13 +95,7 @@
     cursor: pointer;
 }
 
-.todolist__task-task-close:hover {
-    transform: scale(1.5) rotate(45deg);
-    font-weight: 900;
-}
-
 .todolist__task-task-close:active {
-    transform: scale(1.5) rotate(45deg);
     font-weight: 900;
     color: red;
 }

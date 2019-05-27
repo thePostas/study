@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let options = {
+            width: 500,
+            height: 100,
+            background: {
+                color: 'red'
+            },
+            items: [10, 20, 30]
+        };
+
+        let {
+            width,
+            height,
+            background: {
+                color
+            },
+            items: [item1, item2, item3]
+        } = options;
+
+        console.log(width + ' ' + height + ' ' + color + ' ' + item1 + ' ' + item2 + ' ' + item3);
+
+        (function one(callback1, callback2) {
+            let promise = new Promise((resolve, reject) => {
+                var result = callback1();
+                if (result === 0) {
+                    resolve('успех');
+                } else reject('ошибка')
+            });
+            promise.then((result) => {
+                console.log(result);
+                callback2();
+            }).catch((error) => {
+                console.log(error);
+            })
+        })(two, three);
+
+        function two() {
+            console.log('callback1 is working')
+            return 0;
+        }
+
+        function three() {
+            console.log('second call')
+        }
+    </script>
+</body>
+</html>
