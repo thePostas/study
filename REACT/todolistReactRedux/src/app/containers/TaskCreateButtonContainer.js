@@ -6,7 +6,9 @@ const mapDispatchToProps = function(dispatch) {
     return {
         onClick: (event) => {
             event.preventDefault();
-            dispatch({ type: "CREATE_TASK" });
+            dispatch({
+                type: "CREATE_TASK",
+            });
         }
     };
 };

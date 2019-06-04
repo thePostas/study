@@ -13,7 +13,7 @@ export default class Task extends Component {
                 className={this.state.taskIsDone ? 'todolist__task-task todolist__task-task-done' : 'todolist__task-task'}
             >
                 <p>
-                    {/*{this.props.title}*/}
+                    {this.props.title}
                 </p>
                 <span
                     // onClick={this.handleCloseTask}

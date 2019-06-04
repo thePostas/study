@@ -7,7 +7,13 @@ export function taskReducer(state = {}, action) {
             return Object.assign(
                 {},
                 state,
-                {tasks: [...state.tasks, <Task/>]})
+                {tasks: [...state.tasks, <Task title={state.input}/>]})
+        }
+        case "HANDLE_INPUT": {
+            return Object.assign(
+                {},
+                state,
+                {input: state.input + action.payload.inputValue})
         }
         case "DELETE_TASK": {
             return state;

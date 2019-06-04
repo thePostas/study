@@ -4,7 +4,8 @@ import { applyMiddleware } from 'redux';
 import { logger } from './logger';
 
 const initialState = {
-    tasks: []
+    tasks: [],
+    input: ''
 };
 
 export const store = createStore(taskReducer, initialState, applyMiddleware(logger));
