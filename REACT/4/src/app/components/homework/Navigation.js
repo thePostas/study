@@ -27,33 +27,35 @@ export default class Navigation extends Component {
                     url: '#',
                     active: false
                 },
-                    ],
-            links: [],
+                    ]
         };
-        this.onClickLink = this.onClickLink.bind(this);
+        // this.onClickLink = this.onClickLink.bind(this);
     }
 
 
-    onClickLink(currentItemIndex) {
+    onClickLink(currentIndex) {
            let currentItems = this.state.linksData.map((item, index) => {
-              item.active = (currentItemIndex === index);
+              item.active = (currentIndex === index);
+              return item;
            });
 
            this.setState({
-               currentItems
+               linksData: currentItems
            });
     }
 
 
     render() {
-        this.state.links = this.state.linksData.map((link, index) => {
-            return (
-                <li onClick={this.onClickLink.bind(this, index)} className={'navigation__item'}><a href={link.url} className={link.active ? 'navigation__link navigation__link_active' : 'navigation__link'}>{link.name}</a></li>
-            )
-        });
         return (
             <ul className={'navigation__list'}>
-                {this.state.links}
+                {
+                    this.state.linksData.map((link, index) => {
+                        console.log(link);
+                    return (
+                    <li onClick={this.onClickLink.bind(this, index)} className={'navigation__item'}><a href={link.url} className={link.active ? 'navigation__link navigation__link_active' : 'navigation__link'}>{link.name}</a></li>
+                    )
+                })
+                }
             </ul>
         )
     }

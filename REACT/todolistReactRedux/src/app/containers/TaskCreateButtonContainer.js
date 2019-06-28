@@ -1,19 +1,28 @@
-import React, {Component} from 'react';
+import React from 'react';
 import TaskCreateButton from "../components/TaskCreateButton";
 import { connect } from "react-redux";
 
+const mapStateToProps = function(state) {
+    return {
+        value: state.input
+    };
+};
+
 const mapDispatchToProps = function(dispatch) {
     return {
-        onClick: (event) => {
+        onClick: function(event) {
             event.preventDefault();
-            dispatch({
-                type: "CREATE_TASK",
-            });
+            if (this.props.value) {
+                dispatch({
+                    type: "CREATE_TASK",
+                });
+            }
+
         }
     };
 };
 
 export const CreateButton = connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(TaskCreateButton);

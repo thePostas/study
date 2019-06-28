@@ -12,7 +12,6 @@ export default class List extends Component {
         return (
             <div
                 className={'todolist__task-list'}
-                onClick={()=> console.log(this.props)}
             >
                 {this.props.tasks}
             </div>

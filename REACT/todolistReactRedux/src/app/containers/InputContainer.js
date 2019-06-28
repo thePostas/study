@@ -10,12 +10,11 @@ const mapStateToProps = function(state) {
 
 const mapDispatchToProps = function(dispatch) {
     return {
-        onChange: () => {
-            console.log('typing');
+        onChange: (event) => {
             dispatch({
                 type: "HANDLE_INPUT",
                 payload: {
-                    inputValue: this.inputValue
+                    inputValue: event.target.value
                 }
             });
         }

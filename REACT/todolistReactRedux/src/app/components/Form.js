@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import TaskGenerator from '../containers/TaskGenerator';
+import { TaskGeneratorContainer } from '../containers/TaskGenerator';
 import { TaskListContainer } from '../containers/TaskList';
 
 export default class Form extends Component {
@@ -19,7 +19,7 @@ export default class Form extends Component {
             className={'todolist'}
             style={this.styles}
             >
-                <TaskGenerator/>
+                <TaskGeneratorContainer/>
                 <TaskListContainer/>
             </div>
         )

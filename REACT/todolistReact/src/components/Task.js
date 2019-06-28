@@ -40,7 +40,7 @@ export default class Task extends Component {
                     {this.props.title}
                     </p>
                 <span
-                    onClick={this.handleCloseTask}
+                    // onClick={this.handleCloseTask}
                     className={'todolist__task-task-close'}>
                     +
                 </span>
